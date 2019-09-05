@@ -15,18 +15,21 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta name="keywords" content="demo">
+<meta name="description" content="### Vim指令学习   ### 1.Vim 配置（CentOS 环境）   * 编辑配置文件是：sudo vim /etc/vimrc   ### 2.Vim 基础快捷键">
+<meta name="keywords" content="指令学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://jixiyu.github.io/2019/09/03/hello-world/index.html">
+<meta property="og:title" content="vim study">
+<meta property="og:url" content="https://jixiyu.github.io/2018/12/26/vim-study/index.html">
 <meta property="og:site_name" content="jixi&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="### Vim指令学习   ### 1.Vim 配置（CentOS 环境）   * 编辑配置文件是：sudo vim /etc/vimrc   ### 2.Vim 基础快捷键">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-05T06:42:05.362Z">
+<meta property="og:image" content="https://youmeek.gitbooks.io/linux-tutorial/content/images/Vim-Cut-And-Paste-a-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wklken/gallery/master/vim/vim-for-server.png">
+<meta property="og:updated_time" content="2019-09-05T06:42:07.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="vim study">
+<meta name="twitter:description" content="### Vim指令学习   ### 1.Vim 配置（CentOS 环境）   * 编辑配置文件是：sudo vim /etc/vimrc   ### 2.Vim 基础快捷键">
+<meta name="twitter:image" content="https://youmeek.gitbooks.io/linux-tutorial/content/images/Vim-Cut-And-Paste-a-1.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello World | jixi&#39;s blog</title>
+<title>vim study | jixi&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -258,11 +261,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-vim-study" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/09/03/hello-world/" class="article-date">
-      <time datetime="2019-09-03T08:44:19.158Z" itemprop="datePublished">2019-09-03</time>
+      <a href="/2018/12/26/vim-study/" class="article-date">
+      <time datetime="2018-12-26T12:17:16.000Z" itemprop="datePublished">2018-12-26</time>
 </a>
 
 
@@ -277,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      vim study
     </h1>
   
 
@@ -285,10 +288,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/">demo</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指令学习/">指令学习</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -298,21 +305,153 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <blockquote>
+<p>vim study   2018年12月26日11:00:43       64 篇   made by jixi  </p>
+</blockquote>
+<h3 id="Vim指令学习"><a href="#Vim指令学习" class="headerlink" title="Vim指令学习"></a>Vim指令学习</h3><h3 id="1-Vim-配置（CentOS-环境）"><a href="#1-Vim-配置（CentOS-环境）" class="headerlink" title="1.Vim 配置（CentOS 环境）"></a>1.Vim 配置（CentOS 环境）</h3><ul>
+<li>编辑配置文件是：sudo vim /etc/vimrc  </li>
+</ul>
+<h3 id="2-Vim-基础快捷键"><a href="#2-Vim-基础快捷键" class="headerlink" title="2.Vim 基础快捷键"></a>2.Vim 基础快捷键</h3><p>注意  </p>
+<ul>
+<li><p>严格区分字母大小写  </p>
+</li>
+<li><p>含有 <code>Ctrl</code> 字眼都表示 Ctrl 键盘按钮  </p>
+</li>
+<li><p>特定符号需要配合 Shift  </p>
+</li>
+<li><p>键，比如字母键盘区上面的数字区：!@#%%^&amp;*()  </p>
+</li>
+<li><p>要按出冒号键 <code>:</code> 也是需要 Shift 的  </p>
+</li>
+</ul>
+<h3 id="3-移动"><a href="#3-移动" class="headerlink" title="3.移动"></a>3.移动</h3><ul>
+<li><code>j</code>，下</li>
+<li><code>k</code>，上</li>
+<li><code>h</code>，左</li>
+<li><code>l</code>，右</li>
+<li><code>v</code>，按 v 之后按方向键可以选中你要选中的文字</li>
+<li><code>gg</code>，跳到第 1 行</li>
+<li><code>G</code>，跳到第最后行</li>
+<li><code>16G</code> 或 <code>:16</code>，跳到第 16 行</li>
+<li><code>$</code>，到本行 <strong>行尾</strong></li>
+<li><code>0</code>，到本行 <strong>行头</strong></li>
+<li><code>w</code>，到下一个单词的 <strong>开头</strong></li>
+<li><code>e</code>，到下一个单词的 <strong>结尾</strong></li>
+<li><code>Ctrl + u</code>，向文件 <strong>首翻</strong> 半屏</li>
+<li><code>Ctrl + d</code>，向文件 <strong>尾翻</strong> 半屏</li>
+<li><code>Ctrl + f</code>，向文件 <strong>尾翻</strong> 一屏</li>
+<li><code>Ctrl + b</code>，向文件 <strong>首翻</strong> 一屏</li>
+<li><code>*</code>，匹配光标当前所在的单词，移动光标到 <strong>下一个</strong> 匹配单词</li>
+<li><code>#</code>，匹配光标当前所在的单词，移动光标到 <strong>上一个</strong> 匹配单词</li>
+<li><code>^</code>，到本行第一个单词头</li>
+<li><code>g_</code>，到本行最后一个单词尾巴</li>
+<li><code>%</code>，匹配括号移动，包括 <strong>(、{、[</strong></li>
+</ul>
+<hr>
+<h3 id="4-插入"><a href="#4-插入" class="headerlink" title="4.插入"></a>4.插入</h3><ul>
+<li><code>I</code>，在当前 <strong>行首</strong> 插入</li>
+<li><code>A</code>，在当前 <strong>行尾</strong> 插入</li>
+<li><code>i</code>，在当前字符的 <strong>左边</strong> 插入</li>
+<li><code>a</code>，在当前字符的 <strong>右边</strong> 插入</li>
+<li><code>o</code>，在当前行 <strong>下面</strong> 插入一个新行</li>
+<li><code>O</code>，在当前行 <strong>上面</strong> 插入一个新行</li>
+</ul>
+<hr>
+<h3 id="5-删除"><a href="#5-删除" class="headerlink" title="5.删除"></a>5.删除</h3><ul>
+<li><p><code>x</code>，删除 <strong>光标后</strong> 的 1 个字符</p>
+</li>
+<li><p><code>2x</code>，删除 <strong>光标后</strong> 的 2 个字符</p>
+</li>
+<li><p><code>X</code>，删除 <strong>光标前</strong> 的 1 个字符</p>
+</li>
+<li><p><code>2X</code>，删除 <strong>光标前</strong> 的 2 个字符</p>
+</li>
+<li><p><code>dd</code>，删除当前行</p>
+</li>
+<li><p><code>cc</code>，删除当前行后进入 insert 模式</p>
+</li>
+<li><p><code>dw</code>，删除当前光标下的单词/空格</p>
+</li>
+<li><p><code>d$</code>，删除光标至 <strong>行尾</strong> 所有字符</p>
+</li>
+<li><p><code>dG</code>，删除光标至 <strong>文件尾</strong> 所有字符</p>
+</li>
+<li><p><code>3dd</code>，从当前光标开始，删掉 3 行</p>
+</li>
+<li><p><code>echo &gt; aa.txt</code>，从 bash 角度清空文件内容，这个比较高效</p>
+</li>
+<li><p>复制</p>
+<ul>
+<li><code>y</code>，复制光标所选字符</li>
+<li><code>yw</code>，复制光标后单词</li>
+<li><code>yy</code>，复制当前行</li>
+<li><code>4yy</code>，复制当前行及下面 4 行</li>
+<li><code>y$</code>，复制光标位置至 <strong>行尾</strong> 的内容</li>
+<li><code>y^</code>，复制光标位置至 <strong>行首</strong> 的内容</li>
+</ul>
+</li>
+<li><p>粘贴</p>
+<ul>
+<li><code>p</code>，将粘贴板中内容复制到 <strong>光标之后</strong></li>
+<li><code>P</code>，将粘贴板中内容复制到 <strong>光标之前</strong></li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li><code>ddp</code>，交换当前光标所在行和下一行的位置</li>
+<li><code>u</code>，撤销</li>
+<li><code>:wq</code>，退出并 <strong>保存</strong></li>
+<li><code>:q!</code>，退出并 <strong>不保存</strong></li>
+<li><code>Ctrl + v</code>，进入 Vim 列编辑</li>
+<li><code>guu</code>，把当前行的字母全部转换成 <strong>小写</strong></li>
+<li><code>gUU</code>，把当前行的字母全部转换成 <strong>大写</strong></li>
+<li><code>g~~</code>，把当前行的字母是大写的转换成小写，是小写的转换成大写</li>
+<li><code>:saveas /opt/setups/text.txt</code>，另存到 /opt/setups/text.txt</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-搜索"><a href="#6-搜索" class="headerlink" title="6.搜索"></a>6.搜索</h3><ul>
+<li><p><code>/YouMeek</code>，从光标开始处向文件尾搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
+</li>
+<li><p><code>?YouMeek</code>，从光标开始处向文件首搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
+</li>
+<li><p>替换</p>
+<ul>
+<li><code>:%s/YouMeek/Judasn/g</code>，把文件中所有 YouMeek 替换为：Judasn</li>
+<li><code>:%s/YouMeek/Judasn/</code>，把文件中所有行中第一个 YouMeek 替换为：Judasn</li>
+<li><code>:s/YouMeek/Judasn/</code>，把光标当前行第一个 YouMeek 替换为 Judasn</li>
+<li><code>:s/YouMeek/Judasn/g</code>，把光标当前行所有 YouMeek 替换为 Judasn</li>
+<li><code>:s#YouMeek/#Judasn/#</code>，除了使用斜杠作为分隔符之外，还可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符，该命令表示：把光标当前行第一个 YouMeek/ 替换为 Judasn/</li>
+<li><code>:10,31s/YouMeek/Judasng</code>，把第 10 行到 31 行之间所有 YouMeek 替换为 Judasn</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="7-Vim-的特殊复制、黏贴"><a href="#7-Vim-的特殊复制、黏贴" class="headerlink" title="7.Vim 的特殊复制、黏贴"></a>7.Vim 的特殊复制、黏贴</h3><ul>
+<li>Vim 提供了 12 个剪贴板，分别是：<code>0,1,2,3,4,5,6,7,8,9,a,&quot;</code>，默认采用的是 <code>&quot;</code>，也就是双引号，可能你初读感觉很奇怪。你可以用 Vim 编辑某个文件，然后输入：<code>:reg</code>。你可以看到如下内容：  </li>
+</ul>
+<p><img src="https://youmeek.gitbooks.io/linux-tutorial/content/images/Vim-Cut-And-Paste-a-1.png" alt="vim"></p>
+<ul>
+<li>复制到某个剪切板的命令：<code>&quot;7y</code>，表示使用 7 号剪切板。</li>
+<li>黏贴某个剪切板内容：<code>&quot;7p</code>，表示使用 7 号剪切板内容进行黏贴</li>
+</ul>
+<hr>
+<h3 id="8-Vim-配置"><a href="#8-Vim-配置" class="headerlink" title="8.Vim 配置"></a>8.Vim 配置</h3><p>我个人本地不使用 Vim 的，基本上都是在操作服务器的时候使用，所以这里推荐这个配置文件</p>
+<ul>
+<li><a href="https://github.com/wklken/vim-for-server" target="_blank" rel="noopener">vim-for-server</a></li>
+<li>在假设你已经备份好你的 Vim 配置文件后，使用该配置文件：<code>curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc &gt; ~/.vimrc</code></li>
+<li>效果如下：  </li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/wklken/gallery/master/vim/vim-for-server.png" alt="vim-for-server"></p>
+<p>需要特别注意的是，如果你平时粘贴内容到终端 Vim 出现缩进错乱，一般需要这样做：</p>
+<ul>
+<li>进入 vim 后，按 <code>F5</code>，然后 <code>shirt + insert</code> 进行粘贴。这种事就不会错乱了。</li>
+<li>原因是：<code>vim ~/.vimrc</code> 中有一行这样的设置：<code>set pastetoggle=&lt;F5&gt;</code></li>
+</ul>
+<hr>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><blockquote>
+<p>2018年12月26日11:35:40</p>
+</blockquote>
 
       
     </div>
@@ -321,13 +460,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/09/03/hello-world/">Hello World</a></p>
+        <p><span>Title:</span><a href="/2018/12/26/vim-study/">vim study</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">jixi</a></p>
-        <p><span>Created:</span>2019-09-03, 16:44:19</p>
-        <p><span>Updated:</span>2019-09-05, 14:42:05</p>
+        <p><span>Created:</span>2018-12-26, 20:17:16</p>
+        <p><span>Updated:</span>2019-09-05, 14:42:07</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/09/03/hello-world/" title="Hello World">https://jixiyu.github.io/2019/09/03/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/09/03/hello-world/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2018/12/26/vim-study/" title="vim study">https://jixiyu.github.io/2018/12/26/vim-study/</a>
+            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2018/12/26/vim-study/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -339,12 +478,12 @@
 
     <nav id="article-nav">
         
-        
-            <div id="article-nav-older" class="article-nav-title">
+            <div id="article-nav-newer" class="article-nav-title">
                 <a href="/2019/03/24/firstdemo/">
                     你有没有在一瞬间忽然认清了一个人？
                 </a>
             </div>
+        
         
     </nav>
 
@@ -354,7 +493,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim指令学习"><span class="toc-number">1.</span> <span class="toc-text">Vim指令学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Vim-配置（CentOS-环境）"><span class="toc-number">2.</span> <span class="toc-text">1.Vim 配置（CentOS 环境）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Vim-基础快捷键"><span class="toc-number">3.</span> <span class="toc-text">2.Vim 基础快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-移动"><span class="toc-number">4.</span> <span class="toc-text">3.移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-插入"><span class="toc-number">5.</span> <span class="toc-text">4.插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-删除"><span class="toc-number">6.</span> <span class="toc-text">5.删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-搜索"><span class="toc-number">7.</span> <span class="toc-text">6.搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Vim-的特殊复制、黏贴"><span class="toc-number">8.</span> <span class="toc-text">7.Vim 的特殊复制、黏贴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Vim-配置"><span class="toc-number">9.</span> <span class="toc-text">8.Vim 配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#END"><span class="toc-number"></span> <span class="toc-text">END</span></a>
         
     </div>
     <style>
@@ -390,7 +529,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello World　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"vim study　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -410,15 +549,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/2019/03/24/firstdemo/" title="Pre: 你有没有在一瞬间忽然认清了一个人？">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/03/24/firstdemo/" title="Next: 你有没有在一瞬间忽然认清了一个人？">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
     </div>
 

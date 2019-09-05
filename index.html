@@ -74,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: false
     }
 </script>
 
@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情感/">情感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/指令学习/">指令学习</a></li></ul>
                     </div>
                 </section>
                 
@@ -260,321 +260,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-vim-study" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/03/vim-study/" class="article-date">
-      <time datetime="2019-09-03T11:56:39.065Z" itemprop="datePublished">2019-09-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/vim-study/">vim study</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <blockquote>
-<p>vim study<br>2018年12月26日11:00:43<br>64 篇<br>made by jixi  </p>
-</blockquote>
-<h3 id="Vim指令学习"><a href="#Vim指令学习" class="headerlink" title="Vim指令学习"></a>Vim指令学习</h3><hr>
-<h3 id="1-Vim-配置（CentOS-环境）"><a href="#1-Vim-配置（CentOS-环境）" class="headerlink" title="1.Vim 配置（CentOS 环境）"></a>1.Vim 配置（CentOS 环境）</h3><ul>
-<li>编辑配置文件是：sudo vim /etc/vimrc  </li>
-</ul>
-<hr>
-<h3 id="2-Vim-基础快捷键"><a href="#2-Vim-基础快捷键" class="headerlink" title="2.Vim 基础快捷键"></a>2.Vim 基础快捷键</h3><p>注意  </p>
-<ul>
-<li><p>严格区分字母大小写  </p>
-</li>
-<li><p>含有 <code>Ctrl</code> 字眼都表示 Ctrl 键盘按钮  </p>
-</li>
-<li><p>特定符号需要配合 Shift  </p>
-</li>
-<li><p>键，比如字母键盘区上面的数字区：!@#%%^&amp;*()  </p>
-</li>
-<li><p>要按出冒号键 <code>:</code> 也是需要 Shift 的  </p>
-</li>
-</ul>
-<h3 id="3-移动"><a href="#3-移动" class="headerlink" title="3.移动"></a>3.移动</h3><ul>
-<li><code>j</code>，下</li>
-<li><code>k</code>，上</li>
-<li><code>h</code>，左</li>
-<li><code>l</code>，右</li>
-<li><code>v</code>，按 v 之后按方向键可以选中你要选中的文字</li>
-<li><code>gg</code>，跳到第 1 行</li>
-<li><code>G</code>，跳到第最后行</li>
-<li><code>16G</code> 或 <code>:16</code>，跳到第 16 行</li>
-<li><code>$</code>，到本行 <strong>行尾</strong></li>
-<li><code>0</code>，到本行 <strong>行头</strong></li>
-<li><code>w</code>，到下一个单词的 <strong>开头</strong></li>
-<li><code>e</code>，到下一个单词的 <strong>结尾</strong></li>
-<li><code>Ctrl + u</code>，向文件 <strong>首翻</strong> 半屏</li>
-<li><code>Ctrl + d</code>，向文件 <strong>尾翻</strong> 半屏</li>
-<li><code>Ctrl + f</code>，向文件 <strong>尾翻</strong> 一屏</li>
-<li><code>Ctrl + b</code>，向文件 <strong>首翻</strong> 一屏</li>
-<li><code>*</code>，匹配光标当前所在的单词，移动光标到 <strong>下一个</strong> 匹配单词</li>
-<li><code>#</code>，匹配光标当前所在的单词，移动光标到 <strong>上一个</strong> 匹配单词</li>
-<li><code>^</code>，到本行第一个单词头</li>
-<li><code>g_</code>，到本行最后一个单词尾巴</li>
-<li><code>%</code>，匹配括号移动，包括 <strong>(、{、[</strong></li>
-</ul>
-<hr>
-<h3 id="4-插入"><a href="#4-插入" class="headerlink" title="4.插入"></a>4.插入</h3><ul>
-<li><code>I</code>，在当前 <strong>行首</strong> 插入</li>
-<li><code>A</code>，在当前 <strong>行尾</strong> 插入</li>
-<li><code>i</code>，在当前字符的 <strong>左边</strong> 插入</li>
-<li><code>a</code>，在当前字符的 <strong>右边</strong> 插入</li>
-<li><code>o</code>，在当前行 <strong>下面</strong> 插入一个新行</li>
-<li><code>O</code>，在当前行 <strong>上面</strong> 插入一个新行</li>
-</ul>
-<hr>
-<h3 id="5-删除"><a href="#5-删除" class="headerlink" title="5.删除"></a>5.删除</h3><ul>
-<li><p><code>x</code>，删除 <strong>光标后</strong> 的 1 个字符</p>
-</li>
-<li><p><code>2x</code>，删除 <strong>光标后</strong> 的 2 个字符</p>
-</li>
-<li><p><code>X</code>，删除 <strong>光标前</strong> 的 1 个字符</p>
-</li>
-<li><p><code>2X</code>，删除 <strong>光标前</strong> 的 2 个字符</p>
-</li>
-<li><p><code>dd</code>，删除当前行</p>
-</li>
-<li><p><code>cc</code>，删除当前行后进入 insert 模式</p>
-</li>
-<li><p><code>dw</code>，删除当前光标下的单词/空格</p>
-</li>
-<li><p><code>d$</code>，删除光标至 <strong>行尾</strong> 所有字符</p>
-</li>
-<li><p><code>dG</code>，删除光标至 <strong>文件尾</strong> 所有字符</p>
-</li>
-<li><p><code>3dd</code>，从当前光标开始，删掉 3 行</p>
-</li>
-<li><p><code>echo &gt; aa.txt</code>，从 bash 角度清空文件内容，这个比较高效</p>
-</li>
-<li><p>复制</p>
-<ul>
-<li><code>y</code>，复制光标所选字符</li>
-<li><code>yw</code>，复制光标后单词</li>
-<li><code>yy</code>，复制当前行</li>
-<li><code>4yy</code>，复制当前行及下面 4 行</li>
-<li><code>y$</code>，复制光标位置至 <strong>行尾</strong> 的内容</li>
-<li><code>y^</code>，复制光标位置至 <strong>行首</strong> 的内容</li>
-</ul>
-</li>
-<li><p>粘贴</p>
-<ul>
-<li><code>p</code>，将粘贴板中内容复制到 <strong>光标之后</strong></li>
-<li><code>P</code>，将粘贴板中内容复制到 <strong>光标之前</strong></li>
-</ul>
-</li>
-<li><p>其他</p>
-<ul>
-<li><code>ddp</code>，交换当前光标所在行和下一行的位置</li>
-<li><code>u</code>，撤销</li>
-<li><code>:wq</code>，退出并 <strong>保存</strong></li>
-<li><code>:q!</code>，退出并 <strong>不保存</strong></li>
-<li><code>Ctrl + v</code>，进入 Vim 列编辑</li>
-<li><code>guu</code>，把当前行的字母全部转换成 <strong>小写</strong></li>
-<li><code>gUU</code>，把当前行的字母全部转换成 <strong>大写</strong></li>
-<li><code>g~~</code>，把当前行的字母是大写的转换成小写，是小写的转换成大写</li>
-<li><code>:saveas /opt/setups/text.txt</code>，另存到 /opt/setups/text.txt</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-搜索"><a href="#6-搜索" class="headerlink" title="6.搜索"></a>6.搜索</h3><ul>
-<li><p><code>/YouMeek</code>，从光标开始处向文件尾搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
-</li>
-<li><p><code>?YouMeek</code>，从光标开始处向文件首搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
-</li>
-<li><p>替换</p>
-<ul>
-<li><code>:%s/YouMeek/Judasn/g</code>，把文件中所有 YouMeek 替换为：Judasn</li>
-<li><code>:%s/YouMeek/Judasn/</code>，把文件中所有行中第一个 YouMeek 替换为：Judasn</li>
-<li><code>:s/YouMeek/Judasn/</code>，把光标当前行第一个 YouMeek 替换为 Judasn</li>
-<li><code>:s/YouMeek/Judasn/g</code>，把光标当前行所有 YouMeek 替换为 Judasn</li>
-<li><code>:s#YouMeek/#Judasn/#</code>，除了使用斜杠作为分隔符之外，还可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符，该命令表示：把光标当前行第一个 YouMeek/ 替换为 Judasn/</li>
-<li><code>:10,31s/YouMeek/Judasng</code>，把第 10 行到 31 行之间所有 YouMeek 替换为 Judasn</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="7-Vim-的特殊复制、黏贴"><a href="#7-Vim-的特殊复制、黏贴" class="headerlink" title="7.Vim 的特殊复制、黏贴"></a>7.Vim 的特殊复制、黏贴</h3><ul>
-<li>Vim 提供了 12 个剪贴板，分别是：<code>0,1,2,3,4,5,6,7,8,9,a,&quot;</code>，默认采用的是 <code>&quot;</code>，也就是双引号，可能你初读感觉很奇怪。你可以用 Vim 编辑某个文件，然后输入：<code>:reg</code>。你可以看到如下内容：  </li>
-</ul>
-<p><img src="https://youmeek.gitbooks.io/linux-tutorial/content/images/Vim-Cut-And-Paste-a-1.png" alt="vim"></p>
-<ul>
-<li>复制到某个剪切板的命令：<code>&quot;7y</code>，表示使用 7 号剪切板。</li>
-<li>黏贴某个剪切板内容：<code>&quot;7p</code>，表示使用 7 号剪切板内容进行黏贴</li>
-</ul>
-<hr>
-<h3 id="8-Vim-配置"><a href="#8-Vim-配置" class="headerlink" title="8.Vim 配置"></a>8.Vim 配置</h3><p>我个人本地不使用 Vim 的，基本上都是在操作服务器的时候使用，所以这里推荐这个配置文件</p>
-<ul>
-<li><a href="https://github.com/wklken/vim-for-server" target="_blank" rel="noopener">vim-for-server</a></li>
-<li>在假设你已经备份好你的 Vim 配置文件后，使用该配置文件：<code>curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc &gt; ~/.vimrc</code></li>
-<li>效果如下：  </li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/wklken/gallery/master/vim/vim-for-server.png" alt="vim-for-server"></p>
-<p>需要特别注意的是，如果你平时粘贴内容到终端 Vim 出现缩进错乱，一般需要这样做：</p>
-<ul>
-<li>进入 vim 后，按 <code>F5</code>，然后 <code>shirt + insert</code> 进行粘贴。这种事就不会错乱了。</li>
-<li>原因是：<code>vim ~/.vimrc</code> 中有一行这样的设置：<code>set pastetoggle=&lt;F5&gt;</code></li>
-</ul>
-<hr>
-<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><blockquote>
-<p>2018年12月26日11:35:40</p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-firstdemo" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/03/firstdemo/" class="article-date">
-      <time datetime="2019-09-03T10:44:32.864Z" itemprop="datePublished">2019-09-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/firstdemo/">你有没有在一瞬间忽然认清了一个人？</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <blockquote>
-<p>优秀此人<br>2019年03月24日10:11:54<br>66 篇<br>made by jixi</p>
-</blockquote>
-<h3 id="你有没有在一瞬间忽然认清了一个人？"><a href="#你有没有在一瞬间忽然认清了一个人？" class="headerlink" title="你有没有在一瞬间忽然认清了一个人？"></a>你有没有在一瞬间忽然认清了一个人？</h3><hr>
-<p>我曾经喜欢过一个女生。一个高二坐在我后桌的女生。</p>
-<p>我不知道怎么描述我有多喜欢她，但却记得十七八岁时只知道学习的我，愿意每天牺牲二十分钟午休的时间来折爱心。爱心上写上着那天的天气，日期和她衣服的颜色。</p>
-<p>我也记得，为了给她准备一份有意义的生日礼物，我恳求班上18位和她关系比较近的同学，为她写了生日祝福。</p>
-<p>我还记得，我会在开小灶时，把学到的东西一点一点整理的起来送给她。</p>
-<p>在中学阶段，女生总是比同龄男生要成熟。我的心思她很早就猜出来了。整整一年多的时间，她都一直疏远我，我们说的话可能不超过10句。</p>
-<p>毕业那天，我把所有的纸心按日期整理好，装到铁盒子里。盒子沉甸甸的，我让朋友帮我送给了她。</p>
-<p>我不认为那是告白，那对于我来说更像是告别，我并没有很难过，就像我明白自己不会因为考不上清北而难过一样。只是那种感觉非常微妙，有些遗憾，又好像有点轻松。</p>
-<p>当天夜里，我收到了一封邮件。</p>
-<p>其中有几段话是这样的，</p>
-<p>“一段时间的相处来看，你做了很多，我也很感动，你心思很细腻，但是我真的不值得你花这么多心思和时间。</p>
-<p>我觉得现在这种时候，我只要沉默或抱怨就好，因为我还没有到真正到接触感情的时候，我们毕竟太年轻。</p>
-<p>……</p>
-<p>我们即将遇见更多 更复杂的人，希望你能继续用执著和单纯对待他们，真心希望你有更多的快乐。”</p>
-<p>六年过去了，我的女朋友换了一个又一个。</p>
-<p>第一任已经结婚生子。</p>
-<p>第二任考上了普林斯顿的研究生。</p>
-<p>第三任比我小了四岁，天真烂漫。</p>
-<p>但长相外形姣好性格温和的她却是一个男朋友也没有过。</p>
-<p>一直都是一个人，就像高中那样。</p>
-<p>她写的那封信我看过几百遍，像做语文的阅读理解一样。因为老师说过，多读文章才看得懂。</p>
-<p>于是我一直断断续续的读着。断断续续的读了六年。</p>
-<p>这些年，我们联系的不多，我也没有再在现实中见过她。</p>
-<p>直到上一周，她突然问了我一些关于学业上的事情，特别的自然，就像六年前，高二前后桌时她问我练习题一样。</p>
-<p><b> 有些事情，真的没有我们想的那么复杂。</b></p>
-<p>一道逻辑很简单的算法题，我们却试图套用一些非常复杂的数学模型。花了大半天的时间却发现和结果相差甚远。</p>
-<p>是啊，很多时候答案很简单，偏偏是我们自己没有想到而已。</p>
-<p>哦，原来真的会有那样的女生，她和你说的全都是实话。没有套路，没有敷衍。她只是把她自己想的告诉你而已。</p>
-<p>原来我一直以为，女生拒绝男生总需要一些看似好听得借口，比如我们还小，不适合谈感情。</p>
-<p>原来我一直以为，那封信的存在只是为了让我觉得没有那么难堪，比直接说出“我看不上你”来的更容易接受。</p>
-<p>原来我一直以为，是我长的不够帅或者成绩不够好，才无法拥有那份感情。</p>
-<p>原来曾经，我也是个戏精啊。</p>
-<p>后来我才知道，在她收到我的生日礼物的时候也流了泪。</p>
-<p>后来我才知道，在她被其他男生欺负的时候，让周围的人不要告诉我。</p>
-<p>后来我才知道，在更早之前，她都不会接受男生送给她的礼物。</p>
-<p>我想起了她托朋友转达我的那句话，“安心学习，不要让十年以后的我们感到遗憾。”</p>
-<p>明明是那样一个内向的女生，我却自作主张为她收集生日祝福，搞的满城风雨。</p>
-<p>明明她最好的朋友就是我们班出了名的学神，我这个前十都没有的渣渣还自以为是的给她做复习材料。</p>
-<p>明明当时告诉自己要一直等她，但从大学以后自己身边却总是异性不断。</p>
-<p>明明碰到过很多绿茶还被当过备胎，却迟迟不能分清什么是伪善，什么才是单纯。</p>
-<p>这么些年我一直努力的学习，提升自己，有很大一部分原因就是想证明当时她没有和我在一起是个错误决定。</p>
-<p><b> 实际上我只成功的证明了自己是个傻逼。</b> </p>
-<p>她一直都是那样一个谁也不想伤害的女生。从来都是客观向上，善待生活。从不和男生暧昧，她只是觉得自己还不想恋爱，她只是有她自己的想法。</p>
-<p>或许不久之后她将会开始一段感情，或许又不会。</p>
-<p>虽然也有一些好奇，不过现在，我不会再尝试着揣测她的想法。因为她应该被尊重，尤其是被那些有着或是有过我当时年那般心思的男生。</p>
-<p>确实对自己有些失望。</p>
-<p>但至少，我忽然间明白了，高中我喜欢过的那个女生，是多么的值得我用16-18岁的年华去喜欢。</p>
-<p>因为她呀，见山是山，见海是海，见我也是我。</p>
-<p>就像她喜欢的艾薇儿唱出来的那样，</p>
-<p><b> This innocence is brilliant.</b> </p>
-<p>愿她被这世界温柔相待。</p>
-<p>也愿她能碰到让她不再漂泊的人。</p>
-<hr>
-<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -604,7 +289,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>&lt;Excerpt in index | 首页摘要&gt;<br>+
+              <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
           
       
     </div>
@@ -614,9 +299,160 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/">demo</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
           <a href="/2019/09/03/hello-world/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-firstdemo" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/24/firstdemo/" class="article-date">
+      <time datetime="2019-03-24T12:17:16.000Z" itemprop="datePublished">2019-03-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/24/firstdemo/">你有没有在一瞬间忽然认清了一个人？</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="你有没有在一瞬间忽然认清了一个人？"><a href="#你有没有在一瞬间忽然认清了一个人？" class="headerlink" title="你有没有在一瞬间忽然认清了一个人？"></a>你有没有在一瞬间忽然认清了一个人？</h3><hr>
+<p>我曾经喜欢过一个女生。一个高二坐在我后桌的女生。</p>
+<p>我不知道怎么描述我有多喜欢她，但却记得十七八岁时只知道学习的我，愿意每天牺牲二十分钟午休的时间来折爱心。爱心上写上着那天的天气，日期和她衣服的颜色。</p>
+<p>我也记得，为了给她准备一份有意义的生日礼物，我恳求班上18位和她关系比较近的同学，为她写了生日祝福。</p>
+<p>我还记得，我会在开小灶时，把学到的东西一点一点整理的起来送给她。</p>
+<p>在中学阶段，女生总是比同龄男生要成熟。我的心思她很早就猜出来了。整整一年多的时间，她都一直疏远我，我们说的话可能不超过10句。</p>
+<p>毕业那天，我把所有的纸心按日期整理好，装到铁盒子里。盒子沉甸甸的，我让朋友帮我送给了她。</p>
+<p>我不认为那是告白，那对于我来说更像是告别，我并没有很难过，就像我明白自己不会因为考不上清北而难过一样。只是那种感觉非常微妙，有些遗憾，又好像有点轻松。</p>
+<p>当天夜里，我收到了一封邮件。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/文章/">文章</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/情感/">情感</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/03/24/firstdemo/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-vim-study" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/26/vim-study/" class="article-date">
+      <time datetime="2018-12-26T12:17:16.000Z" itemprop="datePublished">2018-12-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/26/vim-study/">vim study</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              ### Vim指令学习  
+### 1.Vim 配置（CentOS 环境）  
+* 编辑配置文件是：sudo vim /etc/vimrc  
+### 2.Vim 基础快捷键   
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指令学习/">指令学习</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/12/26/vim-study/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
