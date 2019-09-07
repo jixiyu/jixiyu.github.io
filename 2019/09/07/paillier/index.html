@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="jixi">
+
+
+
+<meta name="description" content="密码学和共识算法made by jixi    Paillier加密系统，是1999年paillier发明的概率公钥加密系统。基于复合剩余类的困难问题。该加密算法是一种同态加密，满足加法和数乘同态。    1. 算法原理">
+<meta name="keywords" content="同态加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="paillier算法了解">
+<meta property="og:url" content="https://jixiyu.github.io/2019/09/07/paillier/index.html">
+<meta property="og:site_name" content="jixi&#39;s blog">
+<meta property="og:description" content="密码学和共识算法made by jixi    Paillier加密系统，是1999年paillier发明的概率公钥加密系统。基于复合剩余类的困难问题。该加密算法是一种同态加密，满足加法和数乘同态。    1. 算法原理">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830106180.png">
+<meta property="og:image" content="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830226499.png">
+<meta property="og:image" content="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830240135.png">
+<meta property="og:image" content="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830299846.png">
+<meta property="og:updated_time" content="2019-09-07T04:50:22.613Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="paillier算法了解">
+<meta name="twitter:description" content="密码学和共识算法made by jixi    Paillier加密系统，是1999年paillier发明的概率公钥加密系统。基于复合剩余类的困难问题。该加密算法是一种同态加密，满足加法和数乘同态。    1. 算法原理">
+<meta name="twitter:image" content="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830106180.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jixi&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>paillier算法了解 | jixi&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar1.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jixi</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书籍/">书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同态加密/">同态加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情感/">情感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术指令/">技术指令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/指令学习/">指令学习</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jixi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar1.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jixi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-paillier" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/07/paillier/" class="article-date">
+      <time datetime="2019-09-07T04:17:16.000Z" itemprop="datePublished">2019-09-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      paillier算法了解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/密码学/">密码学</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/同态加密/">同态加密</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>密码学和共识算法<br>made by jixi  </p>
+</blockquote>
+<p>Paillier加密系统，是1999年paillier发明的概率公钥加密系统。基于复合剩余类的困难问题。该加密算法是一种同态加密，满足加法和数乘同态。  </p>
+<hr>
+<h3 id="1-算法原理"><a href="#1-算法原理" class="headerlink" title="1. 算法原理"></a>1. 算法原理</h3><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830106180.png" alt="enter description here"></p>
+<a id="more"></a>
+
+<p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830226499.png" alt="enter description here"><br><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830240135.png" alt="enter description here"></p>
+<hr>
+<h3 id="2-java代码"><a href="#2-java代码" class="headerlink" title="2. java代码"></a>2. java代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">package xinxianquan;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.math.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*; </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @author node</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Paillier</span></span>&#123;</span><br><span class="line">	<span class="comment">//选取两个较大的质数p与q，lambda是p-1与q-1的最小公倍数</span></span><br><span class="line">	 private BigInteger p, q, lambda; </span><br><span class="line">	 </span><br><span class="line">	<span class="comment">//n是p与q的乘积</span></span><br><span class="line">	 public BigInteger n;</span><br><span class="line">	 </span><br><span class="line">	<span class="comment">//n_square = n*n </span></span><br><span class="line">	 public BigInteger n_square; </span><br><span class="line">	 private BigInteger g;           </span><br><span class="line">	 private int bitLength;</span><br><span class="line">	 </span><br><span class="line">	 public Paillier(int bitLengthVal, int certainty) &#123;         </span><br><span class="line">		   Key(bitLengthVal, certainty);     </span><br><span class="line">		   &#125; </span><br><span class="line">	 public Paillier() &#123;          </span><br><span class="line">		 Key(<span class="number">32</span>, <span class="number">64</span>);      </span><br><span class="line">		 &#125;</span><br><span class="line">	 public <span class="keyword">void</span> Key(int bitLengthVal, int certainty) &#123;</span><br><span class="line">		 bitLength = bitLengthVal;</span><br><span class="line">		<span class="comment">//随机构造两个大素数，详情参见API，BigInteger的构造方法</span></span><br><span class="line">		 p = <span class="keyword">new</span> BigInteger(bitLength / <span class="number">2</span>, certainty, <span class="keyword">new</span> Random());         </span><br><span class="line">		 q = <span class="keyword">new</span> BigInteger(bitLength / <span class="number">2</span>, certainty, <span class="keyword">new</span> Random());  </span><br><span class="line">		 </span><br><span class="line">		 <span class="comment">//n=p*q;</span></span><br><span class="line">		 n = p.multiply(q); </span><br><span class="line">		 </span><br><span class="line">		 <span class="comment">//nsquare=n*n;        </span></span><br><span class="line">		 n_square = n.multiply(n); </span><br><span class="line">		 g=<span class="keyword">new</span> BigInteger(<span class="string">"2"</span>);</span><br><span class="line">		 </span><br><span class="line">		<span class="comment">//求p-1与q-1的乘积除于p-1于q-1的最大公约数</span></span><br><span class="line">		 lambda = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE))</span><br><span class="line">				 .divide(p.subtract(BigInteger.ONE).gcd(q.subtract(BigInteger.ONE))); </span><br><span class="line">		 </span><br><span class="line">		<span class="comment">//检测g是某满足要求</span></span><br><span class="line">		 <span class="keyword">if</span> (g.modPow(lambda, n_square).subtract(BigInteger.ONE).divide(n).gcd(n).intValue() != <span class="number">1</span>) &#123;  </span><br><span class="line">			 System.out.println(<span class="string">"g的选取不合适!"</span>);             </span><br><span class="line">			 System.exit(<span class="number">1</span>); </span><br><span class="line">		 	&#125;      </span><br><span class="line">		 &#125;</span><br><span class="line">	 </span><br><span class="line">	<span class="comment">//给定r的加密</span></span><br><span class="line">	    public BigInteger En(BigInteger m, BigInteger r) &#123;          </span><br><span class="line">	    	<span class="keyword">return</span> g.modPow(m, n_square).multiply(r.modPow(n, n_square)).mod(n_square);     </span><br><span class="line">	    	&#125;</span><br><span class="line">	    </span><br><span class="line">	<span class="comment">//随机生成r的加密</span></span><br><span class="line">	    public BigInteger En(BigInteger m) &#123;          </span><br><span class="line">	    	BigInteger r = <span class="keyword">new</span> BigInteger(bitLength, <span class="keyword">new</span> Random());          </span><br><span class="line">	        <span class="keyword">return</span> g.modPow(m, n_square).multiply(r.modPow(n, n_square)).mod(n_square); </span><br><span class="line">	       &#125; </span><br><span class="line">	    </span><br><span class="line">	 <span class="comment">//解密</span></span><br><span class="line">	    public BigInteger De(BigInteger c) &#123;          </span><br><span class="line">	    	BigInteger u = g.modPow(lambda, n_square).subtract(BigInteger.ONE).divide(n).modInverse(n);         </span><br><span class="line">	        <span class="keyword">return</span> c.modPow(lambda, n_square).subtract(BigInteger.ONE).divide(n).multiply(u).mod(n);      </span><br><span class="line">	        &#125; </span><br><span class="line">	    </span><br><span class="line">	    public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) &#123;</span><br><span class="line">	    	 Paillier paillier = <span class="keyword">new</span> Paillier(); </span><br><span class="line">	    	 <span class="comment">//创建两个大整数m1,m2:</span></span><br><span class="line">	    	 BigInteger m1 = <span class="keyword">new</span> BigInteger(<span class="string">"20"</span>);          </span><br><span class="line">	    	 BigInteger m2 = <span class="keyword">new</span> BigInteger(<span class="string">"60"</span>);         </span><br><span class="line">	    	 System.out.println(<span class="string">"原文是:"</span>);        </span><br><span class="line">	    	 System.out.println(m1+<span class="string">"和"</span>+m2);</span><br><span class="line">	    	 </span><br><span class="line">	    	 <span class="comment">//将m1,m2加密得到em1,em2:        </span></span><br><span class="line">	    	 BigInteger em1 = paillier.En(m1);          </span><br><span class="line">	    	 BigInteger em2 = paillier.En(m2);  </span><br><span class="line">	    	 </span><br><span class="line">	    	 <span class="comment">//加密后的结果        </span></span><br><span class="line">	    	 System.out.println(<span class="string">"m1加密结果"</span>+em1);          </span><br><span class="line">	    	 System.out.println(<span class="string">"m2加密结果"</span>+em2);</span><br><span class="line">	    	 </span><br><span class="line">	    	<span class="comment">//解密后的结果        </span></span><br><span class="line">	    	 System.out.println(<span class="string">"m1解密结果"</span>+paillier.De(em1));          </span><br><span class="line">	    	 System.out.println(<span class="string">"m2解密结果"</span>+paillier.De(em2).toString());  </span><br><span class="line">	    	 </span><br><span class="line">	    	 <span class="comment">/**</span></span><br><span class="line"><span class="comment">	    	  * paillier性质</span></span><br><span class="line"><span class="comment">	    	  * */</span></span><br><span class="line">	    	 <span class="comment">//加法同态</span></span><br><span class="line">	    	 <span class="comment">// m1+m2,求明文数值的和  </span></span><br><span class="line">	    	 System.out.println(<span class="string">"**************************求和********************"</span>);        </span><br><span class="line">	    	 BigInteger sum_m1m2 = m1.add(m2).mod(paillier.n);          </span><br><span class="line">	    	 System.out.println(<span class="string">"明文数值的和 : "</span> + sum_m1m2.toString());</span><br><span class="line">	    	 System.out.println(<span class="string">"测试"</span>+m1.add(m2));</span><br><span class="line">	    	 </span><br><span class="line">	    	<span class="comment">// em1+em2，求密文数值的和       </span></span><br><span class="line">	    	 BigInteger product_em1em2 = em1.multiply(em2).mod(paillier.n_square);         </span><br><span class="line">	    	 System.out.println(<span class="string">"密文和: "</span> + product_em1em2.toString());          </span><br><span class="line">	    	 System.out.println(<span class="string">"密文和解密: "</span> + paillier.De(product_em1em2).toString());</span><br><span class="line">	    	 </span><br><span class="line">	    	 </span><br><span class="line">	    	 <span class="comment">// 数乘同态</span></span><br><span class="line">	    	 System.out.println(<span class="string">"***************************数乘*********************"</span>);        </span><br><span class="line">	    	 <span class="comment">//做乘法，先将两个数相乘，然后对n求模        </span></span><br><span class="line">	    	 BigInteger multiply_m1m2 = m1.multiply(m2).mod(paillier.n);        </span><br><span class="line">	    	 System.out.println(<span class="string">"两个大整数相乘: "</span> + multiply_m1m2.toString()); </span><br><span class="line">	    	 System.out.println(<span class="string">"测试"</span>+m1.multiply(m2));</span><br><span class="line">	    	 </span><br><span class="line">	    	<span class="comment">//数乘，密文数，乘上某个明文数C的密文值等于=密文数的C次方对n平方求模         </span></span><br><span class="line">	    	 BigInteger multiply_em1em2 = em1.modPow(m2, paillier.n_square);          </span><br><span class="line">	    	 System.out.println(<span class="string">"数乘密文值: "</span> + multiply_em1em2.toString());          </span><br><span class="line">	    	 System.out.println(<span class="string">"数乘密文值解密: "</span> + paillier.De(multiply_em1em2).toString());  </span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-运行结果"><a href="#3-运行结果" class="headerlink" title="3. 运行结果"></a>3. 运行结果</h3><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1567830299846.png" alt="enter description here"></p>
+<hr>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/09/07/paillier/">paillier算法了解</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">jixi</a></p>
+        <p><span>Created:</span>2019-09-07, 12:17:16</p>
+        <p><span>Updated:</span>2019-09-07, 12:50:22</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/09/07/paillier/" title="paillier算法了解">https://jixiyu.github.io/2019/09/07/paillier/</a>
+            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/09/07/paillier/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/09/03/hello-world/">
+                    Hello World
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-算法原理"><span class="toc-number">1.</span> <span class="toc-text">1. 算法原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-java代码"><span class="toc-number">2.</span> <span class="toc-text">2. java代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-运行结果"><span class="toc-number">3.</span> <span class="toc-text">3. 运行结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#END"><span class="toc-number"></span> <span class="toc-text">END</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"paillier算法了解　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/09/03/hello-world/" title="Next: Hello World">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/07/paillier/">paillier算法了解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/firstdemo/">你有没有在一瞬间忽然认清了一个人？</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/26/markdown语法/">markdown语法说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/26/vim-study/">vim study</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/23/极客趣谈/">极客趣谈2——健康常识玉运动实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/22/Git使用/">git使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/05/如何学好英语？/">如何学好英语？</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/硬派健身读书笔记/">读书笔记——锻炼</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019 jixi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
