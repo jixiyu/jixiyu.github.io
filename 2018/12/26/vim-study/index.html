@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://youmeek.gitbooks.io/linux-tutorial/content/images/Vim-Cut-And-Paste-a-1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/wklken/gallery/master/vim/vim-for-server.png">
-<meta property="og:updated_time" content="2019-09-06T08:03:20.029Z">
+<meta property="og:updated_time" content="2019-09-17T15:45:34.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim study">
 <meta name="twitter:description" content="vim study2018年12月26日11:00:4364 篇made by jixi    Vim指令学习1.Vim 配置（CentOS 环境） 编辑配置文件是：sudo vim /etc/vimrc    2.Vim 基础快捷键注意    严格区分字母大小写   含有 Ctrl 字眼都表示 Ctrl 键盘按钮   特定符号需要配合 Shift   键，比如字母键盘区上面的数字区：!@#%%">
@@ -358,46 +358,28 @@
 <li><code>O</code>，在当前行 <strong>上面</strong> 插入一个新行</li>
 </ul>
 <hr>
-<h3 id="5-删除"><a href="#5-删除" class="headerlink" title="5.删除"></a>5.删除</h3><ul>
-<li><p><code>x</code>，删除 <strong>光标后</strong> 的 1 个字符</p>
-</li>
-<li><p><code>2x</code>，删除 <strong>光标后</strong> 的 2 个字符</p>
-</li>
-<li><p><code>X</code>，删除 <strong>光标前</strong> 的 1 个字符</p>
-</li>
-<li><p><code>2X</code>，删除 <strong>光标前</strong> 的 2 个字符</p>
-</li>
-<li><p><code>dd</code>，删除当前行</p>
-</li>
-<li><p><code>cc</code>，删除当前行后进入 insert 模式</p>
-</li>
-<li><p><code>dw</code>，删除当前光标下的单词/空格</p>
-</li>
-<li><p><code>d$</code>，删除光标至 <strong>行尾</strong> 所有字符</p>
-</li>
-<li><p><code>dG</code>，删除光标至 <strong>文件尾</strong> 所有字符</p>
-</li>
-<li><p><code>3dd</code>，从当前光标开始，删掉 3 行</p>
-</li>
-<li><p><code>echo &gt; aa.txt</code>，从 bash 角度清空文件内容，这个比较高效</p>
-</li>
-<li><p>复制</p>
-<ul>
-<li><code>y</code>，复制光标所选字符</li>
-<li><code>yw</code>，复制光标后单词</li>
-<li><code>yy</code>，复制当前行</li>
-<li><code>4yy</code>，复制当前行及下面 4 行</li>
-<li><code>y$</code>，复制光标位置至 <strong>行尾</strong> 的内容</li>
-<li><code>y^</code>，复制光标位置至 <strong>行首</strong> 的内容</li>
-</ul>
-</li>
-<li><p>粘贴</p>
-<ul>
-<li><code>p</code>，将粘贴板中内容复制到 <strong>光标之后</strong></li>
-<li><code>P</code>，将粘贴板中内容复制到 <strong>光标之前</strong></li>
-</ul>
-</li>
-<li><p>其他</p>
+<h3 id="5-删除"><a href="#5-删除" class="headerlink" title="5.删除"></a>5.删除</h3><p><code>x</code>，删除 <strong>光标后</strong> 的 1 个字符</p>
+<p><code>2x</code>，删除 <strong>光标后</strong> 的 2 个字符</p>
+<p><code>X</code>，删除 <strong>光标前</strong> 的 1 个字符</p>
+<p><code>2X</code>，删除 <strong>光标前</strong> 的 2 个字符</p>
+<p><code>dd</code>，删除当前行</p>
+<p><code>cc</code>，删除当前行后进入 insert 模式</p>
+<p><code>dw</code>，删除当前光标下的单词/空格</p>
+<p><code>d$</code>，删除光标至 <strong>行尾</strong> 所有字符</p>
+<p><code>dG</code>，删除光标至 <strong>文件尾</strong> 所有字符</p>
+<p><code>3dd</code>，从当前光标开始，删掉 3 行</p>
+<p><code>echo &gt; aa.txt</code>，从 bash 角度清空文件内容，这个比较高效</p>
+<p>复制</p>
+<p><code>y</code>，复制光标所选字符</p>
+<p><code>yw</code>，复制光标后单词</p>
+<p><code>yy</code>，复制当前行</p>
+<p><code>4yy</code>，复制当前行及下面 4 行</p>
+<p><code>y$</code>，复制光标位置至 <strong>行尾</strong> 的内容</p>
+<p><code>y^</code>，复制光标位置至 <strong>行首</strong> 的内容</p>
+<p>粘贴</p>
+<p><code>p</code>，将粘贴板中内容复制到 <strong>光标之后</strong></p>
+<p><code>P</code>，将粘贴板中内容复制到 <strong>光标之前</strong></p>
+<p>其他</p>
 <ul>
 <li><code>ddp</code>，交换当前光标所在行和下一行的位置</li>
 <li><code>u</code>，撤销</li>
@@ -409,14 +391,9 @@
 <li><code>g~~</code>，把当前行的字母是大写的转换成小写，是小写的转换成大写</li>
 <li><code>:saveas /opt/setups/text.txt</code>，另存到 /opt/setups/text.txt</li>
 </ul>
-</li>
-</ul>
-<h3 id="6-搜索"><a href="#6-搜索" class="headerlink" title="6.搜索"></a>6.搜索</h3><ul>
-<li><p><code>/YouMeek</code>，从光标开始处向文件尾搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
-</li>
-<li><p><code>?YouMeek</code>，从光标开始处向文件首搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
-</li>
-<li><p>替换</p>
+<h3 id="6-搜索"><a href="#6-搜索" class="headerlink" title="6.搜索"></a>6.搜索</h3><p><code>/YouMeek</code>，从光标开始处向文件尾搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
+<p><code>?YouMeek</code>，从光标开始处向文件首搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p>
+<p>替换</p>
 <ul>
 <li><code>:%s/YouMeek/Judasn/g</code>，把文件中所有 YouMeek 替换为：Judasn</li>
 <li><code>:%s/YouMeek/Judasn/</code>，把文件中所有行中第一个 YouMeek 替换为：Judasn</li>
@@ -424,8 +401,6 @@
 <li><code>:s/YouMeek/Judasn/g</code>，把光标当前行所有 YouMeek 替换为 Judasn</li>
 <li><code>:s#YouMeek/#Judasn/#</code>，除了使用斜杠作为分隔符之外，还可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符，该命令表示：把光标当前行第一个 YouMeek/ 替换为 Judasn/</li>
 <li><code>:10,31s/YouMeek/Judasng</code>，把第 10 行到 31 行之间所有 YouMeek 替换为 Judasn</li>
-</ul>
-</li>
 </ul>
 <hr>
 <h3 id="7-Vim-的特殊复制、黏贴"><a href="#7-Vim-的特殊复制、黏贴" class="headerlink" title="7.Vim 的特殊复制、黏贴"></a>7.Vim 的特殊复制、黏贴</h3><ul>
@@ -464,7 +439,7 @@
         <p><span>Title:</span><a href="/2018/12/26/vim-study/">vim study</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">jixi</a></p>
         <p><span>Created:</span>2018-12-26, 20:17:16</p>
-        <p><span>Updated:</span>2019-09-06, 16:03:20</p>
+        <p><span>Updated:</span>2019-09-17, 23:45:34</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2018/12/26/vim-study/" title="vim study">https://jixiyu.github.io/2018/12/26/vim-study/</a>
             <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2018/12/26/vim-study/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
