@@ -15,18 +15,24 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta name="keywords" content="demo">
+<meta name="description" content="1、为什么需要调试写了很多行代码，但是有时候运行的时候遇到了未知的错误，不知道错在哪，有时候错误是某个参数未定义，path找不到等等，这个时候我们就怀疑是值未传递到设置好的参数内，所以可以使用输出语句，但是懂调试的话是写程序的一大利器，且效率极高。 还有就是console.log这种语句写够了！ 最近一直用vscode写后端和前端，一直在接触nodejs语言，但是一直都不怎么了解vscode的调试">
+<meta name="keywords" content="技巧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://jixiyu.github.io/2019/09/03/hello-world/index.html">
+<meta property="og:title" content="vscode debug">
+<meta property="og:url" content="https://jixiyu.github.io/2019/09/17/vscode_debug/index.html">
 <meta property="og:site_name" content="jixi&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="1、为什么需要调试写了很多行代码，但是有时候运行的时候遇到了未知的错误，不知道错在哪，有时候错误是某个参数未定义，path找不到等等，这个时候我们就怀疑是值未传递到设置好的参数内，所以可以使用输出语句，但是懂调试的话是写程序的一大利器，且效率极高。 还有就是console.log这种语句写够了！ 最近一直用vscode写后端和前端，一直在接触nodejs语言，但是一直都不怎么了解vscode的调试">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-05T06:42:05.362Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g73r2l1khhj312r0j7mzt.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g73r5owvr2j30v3075dgu.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g73rb2ffgmj30yj0e4tat.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g73re1ak3cj31n40epad3.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g73rg7aib3j318k0n278q.jpg">
+<meta property="og:updated_time" content="2019-09-18T08:43:34.011Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="vscode debug">
+<meta name="twitter:description" content="1、为什么需要调试写了很多行代码，但是有时候运行的时候遇到了未知的错误，不知道错在哪，有时候错误是某个参数未定义，path找不到等等，这个时候我们就怀疑是值未传递到设置好的参数内，所以可以使用输出语句，但是懂调试的话是写程序的一大利器，且效率极高。 还有就是console.log这种语句写够了！ 最近一直用vscode写后端和前端，一直在接触nodejs语言，但是一直都不怎么了解vscode的调试">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g73r2l1khhj312r0j7mzt.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +64,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello World | jixi&#39;s blog</title>
+<title>vscode debug | jixi&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -262,11 +268,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-vscode_debug" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/09/03/hello-world/" class="article-date">
-      <time datetime="2019-09-03T08:44:19.158Z" itemprop="datePublished">2019-09-03</time>
+      <a href="/2019/09/17/vscode_debug/" class="article-date">
+      <time datetime="2019-09-17T08:17:16.000Z" itemprop="datePublished">2019-09-17</time>
 </a>
 
 
@@ -281,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      vscode debug
     </h1>
   
 
@@ -289,10 +295,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/">demo</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,21 +312,47 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <h4 id="1、为什么需要调试"><a href="#1、为什么需要调试" class="headerlink" title="1、为什么需要调试"></a>1、为什么需要调试</h4><p>写了很多行代码，但是有时候运行的时候遇到了未知的错误，不知道错在哪，有时候错误是某个参数未定义，path找不到等等，这个时候我们就怀疑是值未传递到设置好的参数内，所以可以使用输出语句，但是懂调试的话是写程序的一大利器，且效率极高。</p>
+<p>还有就是console.log这种语句写够了！</p>
+<p>最近一直用vscode写后端和前端，一直在接触nodejs语言，但是一直都不怎么了解vscode的调试，所以决心来学习一下。</p>
 <a id="more"></a>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h4 id="2、vscode如何调试"><a href="#2、vscode如何调试" class="headerlink" title="2、vscode如何调试"></a>2、vscode如何调试</h4><p>VScode除了支持JavaScript和TypeScript，还支持Node.js调试，简直就是为前端工程师而生的。</p>
+<h5 id="2-1-先下载一下express模板项目"><a href="#2-1-先下载一下express模板项目" class="headerlink" title="2.1. 先下载一下express模板项目"></a>2.1. 先下载一下express模板项目</h5><ol>
+<li><code>npm install express-generator -g</code></li>
+<li><code>express -v</code> 查看版本</li>
+<li><code>express myapp</code></li>
+<li><code>cd myapp &amp;&amp; npm install</code></li>
+<li><code>npm start</code></li>
+</ol>
+<h5 id="2-2-启动程序后进入vscode主界面"><a href="#2-2-启动程序后进入vscode主界面" class="headerlink" title="2.2 启动程序后进入vscode主界面"></a>2.2 启动程序后进入vscode主界面</h5><ol>
+<li>F5选择nodejs环境，会生成launch.json配置文件</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g73r2l1khhj312r0j7mzt.jpg" alt="https://tva1.sinaimg.cn/large/006y8mN6ly1g73r2l1khhj312r0j7mzt.jpg"></p>
+<p>其中最重要的配置项就是“Program”字段，这个字段定义了整个应用的入口，开启调试器的时候会从这个入口启动应用。</p>
+<p>我们发现当前这个字段已经有值了，不要慌，那是因为VScode在初始化这个配置文件的时候，会查看package.json中是否有包含了键名为start的scripts，如果有的话，就会把start配置的内容作为“program”字段的值。</p>
+<ol start="2">
+<li>点击绿色三角形，就可以开始调试。</li>
+</ol>
+<p>这时界面上方就会出现一个调试控制的面板，页面右下方会出现一个调试控制台，可以查看你输出的信息，在界面下放会出现一个状态栏，当前的橘黄色表示应用在正常运行</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g73r5owvr2j30v3075dgu.jpg" alt="https://tva1.sinaimg.cn/large/006y8mN6ly1g73r5owvr2j30v3075dgu.jpg"></p>
+<ol start="3">
+<li>设置断点</li>
+</ol>
+<p>设置完断点之后，重新启动调试，然后在浏览器中访问localhost:3000，这时候，断点的形状发生了变化，程序停留在了断点，调试控制面板的按钮也发生了变化</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g73rb2ffgmj30yj0e4tat.jpg" alt="https://tva1.sinaimg.cn/large/006y8mN6ly1g73rb2ffgmj30yj0e4tat.jpg"></p>
+<p>从左到右依次是</p>
+<p><strong>单步跳过</strong></p>
+<p><strong>单步调试</strong></p>
+<p><strong>单步跳出</strong></p>
+<p><strong>重启</strong></p>
+<p><strong>停止调试</strong></p>
+<p>这几个都是常见的断点调试指令。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g73re1ak3cj31n40epad3.jpg" alt="https://tva1.sinaimg.cn/large/006y8mN6ly1g73re1ak3cj31n40epad3.jpg"></p>
+<h5 id="2-3-调式技巧"><a href="#2-3-调式技巧" class="headerlink" title="2.3 调式技巧"></a>2.3 调式技巧</h5><ol>
+<li>将鼠标防止在断点前的变量或者参数上，也可以查看该变量当前的数值，体验与Chrome开发者工具的调试一致。</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g73rg7aib3j318k0n278q.jpg" alt="https://tva1.sinaimg.cn/large/006y8mN6ly1g73rg7aib3j318k0n278q.jpg"></p>
 
       
     </div>
@@ -325,13 +361,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/09/03/hello-world/">Hello World</a></p>
+        <p><span>Title:</span><a href="/2019/09/17/vscode_debug/">vscode debug</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">jixi</a></p>
-        <p><span>Created:</span>2019-09-03, 16:44:19</p>
-        <p><span>Updated:</span>2019-09-05, 14:42:05</p>
+        <p><span>Created:</span>2019-09-17, 16:17:16</p>
+        <p><span>Updated:</span>2019-09-18, 16:43:34</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/09/03/hello-world/" title="Hello World">https://jixiyu.github.io/2019/09/03/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/09/03/hello-world/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2019/09/17/vscode_debug/" title="vscode debug">https://jixiyu.github.io/2019/09/17/vscode_debug/</a>
+            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/09/17/vscode_debug/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -343,16 +379,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/09/17/2019年09月18日小技巧/">
-                    小技巧
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/12/26/markdown语法/">
-                    markdown语法说明
+                <a href="/2019/09/17/2019年09月18日小技巧/">
+                    小技巧
                 </a>
             </div>
         
@@ -364,7 +394,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、为什么需要调试"><span class="toc-number">1.</span> <span class="toc-text">1、为什么需要调试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、vscode如何调试"><span class="toc-number">2.</span> <span class="toc-text">2、vscode如何调试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-先下载一下express模板项目"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 先下载一下express模板项目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-启动程序后进入vscode主界面"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 启动程序后进入vscode主界面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-调式技巧"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 调式技巧</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -400,7 +430,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello World　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"vscode debug　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -419,8 +449,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'https://jixiyu.github.io/2019/09/03/hello-world/';
-            this.page.identifier = '2019/09/03/hello-world/';
+            this.page.url = 'https://jixiyu.github.io/2019/09/17/vscode_debug/';
+            this.page.identifier = '2019/09/17/vscode_debug/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -442,15 +472,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/09/17/2019年09月18日小技巧/" title="Pre: 小技巧">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/12/26/markdown语法/" title="Next: markdown语法说明">
+            <a href="/2019/09/17/2019年09月18日小技巧/" title="Next: 小技巧">
                 <i class="fa fa-angle-right"></i>
             </a>
         
