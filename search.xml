@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>合约交互时发现访问不了地址的bug</title>
+      <link href="/2019/09/29/%E5%90%88%E7%BA%A6%E4%BA%A4%E4%BA%92%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98/"/>
+      <url>/2019/09/29/%E5%90%88%E7%BA%A6%E4%BA%A4%E4%BA%92%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>在编写合约交互的过程中，需要一个<strong>web3</strong>实例用来调用合约访问账户等。</p><p>设置一个provider。为了保证你不会覆盖一个已有的provider（Mist浏览器或安装了MetaMak的浏览器会提供Provider），需要先检查是否 <strong>web3</strong> 实例已存在。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> web3 !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(web3.currentProvider);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// set the provider you want from Web3.providers</span></span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(<span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">"http://localhost:8545"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样就可以使用<strong>web3</strong>提供的接口方法了。比如：</p><a id="more"></a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.defaultAccount</span><br><span class="line">web3.eth.getBalance</span><br><span class="line">......</span><br></pre></td></tr></table></figure><p>启动程序<code>npm run dev</code>，打开了浏览器3000端口访问到了首页界面。</p><p>但是发现控制台console出现了错误提示：<strong>invalid address</strong></p><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7pom0ilibj31ty0hs786.jpg" alt="image-20191007154528876"></p><p>以为是本地由Ganache软件生成的账号程序访问不到。</p><p>上网找解决方法都说账户需要解锁，也就是调用web3的解锁账户的命令。</p><p><code>web3.eth.personal.unlockAccount(web3.eth.defaultAccount).then(console.log(&#39;Account unlocked!&#39;));</code></p><p>但是运行了之后提醒<code>unlockcount</code>函数不存在。</p><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7popvzpv6j31hm08kdhx.jpg" alt="image-20191007154917354"></p><p>之后偶然在网上搜索”metamask访问不了账户地址“这个问题，终于问题得到了解决。</p><p><a href="https://blog.csdn.net/rejames/article/details/89876967" target="_blank" rel="noopener">https://blog.csdn.net/rejames/article/details/89876967</a></p><p>原来最新版的metamask插件默认启用了隐私模式，而官方文档中并没有更新。</p><p>现在新的检查方式为：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查是否是新的MetaMask 或 DApp浏览器</span></span><br><span class="line"><span class="keyword">var</span> web3Provider;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.ethereum) &#123;</span><br><span class="line">   web3Provider = <span class="built_in">window</span>.ethereum;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 请求用户授权</span></span><br><span class="line">    <span class="keyword">await</span> <span class="built_in">window</span>.ethereum.enable();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="comment">// 用户不授权时</span></span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">"User denied account access"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.web3) &#123;   <span class="comment">// 老版 MetaMask Legacy dapp browsers...</span></span><br><span class="line">  web3Provider = <span class="built_in">window</span>.web3.currentProvider;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  web3Provider = <span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">'http://localhost:8545'</span>);</span><br><span class="line">&#125;</span><br><span class="line">web3 = <span class="keyword">new</span> Web3(web3Provider);</span><br></pre></td></tr></table></figure><p>成功引入后，你现在可以使用 web3 对象的API 了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术驿站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dapp开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ipfs使用</title>
       <link href="/2019/09/26/ipfs%E5%AD%A6%E4%B9%A0/"/>
       <url>/2019/09/26/ipfs%E5%AD%A6%E4%B9%A0/</url>
@@ -79,25 +104,6 @@
     
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2019/09/03/hello-world/"/>
-      <url>/2019/09/03/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> demo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>markdown语法说明</title>
       <link href="/2018/12/26/markdown%E8%AF%AD%E6%B3%95/"/>
       <url>/2018/12/26/markdown%E8%AF%AD%E6%B3%95/</url>
@@ -121,69 +127,8 @@
     </entry>
     
     
-    
-    <entry>
-      <title>vim study</title>
-      <link href="/2018/12/26/vim-study/"/>
-      <url>/2018/12/26/vim-study/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>vim study<br>2018年12月26日11:00:43<br>64 篇<br>made by jixi  </p></blockquote><h3 id="Vim指令学习"><a href="#Vim指令学习" class="headerlink" title="Vim指令学习"></a>Vim指令学习</h3><h3 id="1-Vim-配置（CentOS-环境）"><a href="#1-Vim-配置（CentOS-环境）" class="headerlink" title="1.Vim 配置（CentOS 环境）"></a>1.Vim 配置（CentOS 环境）</h3><ul><li>编辑配置文件是：sudo vim /etc/vimrc  </li></ul><h3 id="2-Vim-基础快捷键"><a href="#2-Vim-基础快捷键" class="headerlink" title="2.Vim 基础快捷键"></a>2.Vim 基础快捷键</h3><p>注意  </p><ul><li>严格区分字母大小写  </li><li>含有 <code>Ctrl</code> 字眼都表示 Ctrl 键盘按钮  </li><li>特定符号需要配合 Shift  </li><li>键，比如字母键盘区上面的数字区：!@#%%^&amp;*()  </li><li>要按出冒号键 <code>:</code> 也是需要 Shift 的  </li></ul><a id="more"></a><h3 id="3-移动"><a href="#3-移动" class="headerlink" title="3.移动"></a>3.移动</h3><ul><li><code>j</code>，下</li><li><code>k</code>，上</li><li><code>h</code>，左</li><li><code>l</code>，右</li><li><code>v</code>，按 v 之后按方向键可以选中你要选中的文字</li><li><code>gg</code>，跳到第 1 行</li><li><code>G</code>，跳到第最后行</li><li><code>16G</code> 或 <code>:16</code>，跳到第 16 行</li><li><code>$</code>，到本行 <strong>行尾</strong></li><li><code>0</code>，到本行 <strong>行头</strong></li><li><code>w</code>，到下一个单词的 <strong>开头</strong></li><li><code>e</code>，到下一个单词的 <strong>结尾</strong></li><li><code>Ctrl + u</code>，向文件 <strong>首翻</strong> 半屏</li><li><code>Ctrl + d</code>，向文件 <strong>尾翻</strong> 半屏</li><li><code>Ctrl + f</code>，向文件 <strong>尾翻</strong> 一屏</li><li><code>Ctrl + b</code>，向文件 <strong>首翻</strong> 一屏</li><li><code>*</code>，匹配光标当前所在的单词，移动光标到 <strong>下一个</strong> 匹配单词</li><li><code>#</code>，匹配光标当前所在的单词，移动光标到 <strong>上一个</strong> 匹配单词</li><li><code>^</code>，到本行第一个单词头</li><li><code>g_</code>，到本行最后一个单词尾巴</li><li><code>%</code>，匹配括号移动，包括 <strong>(、{、[</strong></li></ul><hr><h3 id="4-插入"><a href="#4-插入" class="headerlink" title="4.插入"></a>4.插入</h3><ul><li><code>I</code>，在当前 <strong>行首</strong> 插入</li><li><code>A</code>，在当前 <strong>行尾</strong> 插入</li><li><code>i</code>，在当前字符的 <strong>左边</strong> 插入</li><li><code>a</code>，在当前字符的 <strong>右边</strong> 插入</li><li><code>o</code>，在当前行 <strong>下面</strong> 插入一个新行</li><li><code>O</code>，在当前行 <strong>上面</strong> 插入一个新行</li></ul><hr><h3 id="5-删除"><a href="#5-删除" class="headerlink" title="5.删除"></a>5.删除</h3><p><code>x</code>，删除 <strong>光标后</strong> 的 1 个字符</p><p><code>2x</code>，删除 <strong>光标后</strong> 的 2 个字符</p><p><code>X</code>，删除 <strong>光标前</strong> 的 1 个字符</p><p><code>2X</code>，删除 <strong>光标前</strong> 的 2 个字符</p><p><code>dd</code>，删除当前行</p><p><code>cc</code>，删除当前行后进入 insert 模式</p><p><code>dw</code>，删除当前光标下的单词/空格</p><p><code>d$</code>，删除光标至 <strong>行尾</strong> 所有字符</p><p><code>dG</code>，删除光标至 <strong>文件尾</strong> 所有字符</p><p><code>3dd</code>，从当前光标开始，删掉 3 行</p><p><code>echo &gt; aa.txt</code>，从 bash 角度清空文件内容，这个比较高效</p><p>复制</p><p><code>y</code>，复制光标所选字符</p><p><code>yw</code>，复制光标后单词</p><p><code>yy</code>，复制当前行</p><p><code>4yy</code>，复制当前行及下面 4 行</p><p><code>y$</code>，复制光标位置至 <strong>行尾</strong> 的内容</p><p><code>y^</code>，复制光标位置至 <strong>行首</strong> 的内容</p><p>粘贴</p><p><code>p</code>，将粘贴板中内容复制到 <strong>光标之后</strong></p><p><code>P</code>，将粘贴板中内容复制到 <strong>光标之前</strong></p><p>其他</p><ul><li><code>ddp</code>，交换当前光标所在行和下一行的位置</li><li><code>u</code>，撤销</li><li><code>:wq</code>，退出并 <strong>保存</strong></li><li><code>:q!</code>，退出并 <strong>不保存</strong></li><li><code>Ctrl + v</code>，进入 Vim 列编辑</li><li><code>guu</code>，把当前行的字母全部转换成 <strong>小写</strong></li><li><code>gUU</code>，把当前行的字母全部转换成 <strong>大写</strong></li><li><code>g~~</code>，把当前行的字母是大写的转换成小写，是小写的转换成大写</li><li><code>:saveas /opt/setups/text.txt</code>，另存到 /opt/setups/text.txt</li></ul><h3 id="6-搜索"><a href="#6-搜索" class="headerlink" title="6.搜索"></a>6.搜索</h3><p><code>/YouMeek</code>，从光标开始处向文件尾搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p><p><code>?YouMeek</code>，从光标开始处向文件首搜索 YouMeek 字符，按 <code>n</code> 继续向下找，按 <code>N</code> 继续向上找</p><p>替换</p><ul><li><code>:%s/YouMeek/Judasn/g</code>，把文件中所有 YouMeek 替换为：Judasn</li><li><code>:%s/YouMeek/Judasn/</code>，把文件中所有行中第一个 YouMeek 替换为：Judasn</li><li><code>:s/YouMeek/Judasn/</code>，把光标当前行第一个 YouMeek 替换为 Judasn</li><li><code>:s/YouMeek/Judasn/g</code>，把光标当前行所有 YouMeek 替换为 Judasn</li><li><code>:s#YouMeek/#Judasn/#</code>，除了使用斜杠作为分隔符之外，还可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符，该命令表示：把光标当前行第一个 YouMeek/ 替换为 Judasn/</li><li><code>:10,31s/YouMeek/Judasng</code>，把第 10 行到 31 行之间所有 YouMeek 替换为 Judasn</li></ul><hr><h3 id="7-Vim-的特殊复制、黏贴"><a href="#7-Vim-的特殊复制、黏贴" class="headerlink" title="7.Vim 的特殊复制、黏贴"></a>7.Vim 的特殊复制、黏贴</h3><ul><li>Vim 提供了 12 个剪贴板，分别是：<code>0,1,2,3,4,5,6,7,8,9,a,&quot;</code>，默认采用的是 <code>&quot;</code>，也就是双引号，可能你初读感觉很奇怪。你可以用 Vim 编辑某个文件，然后输入：<code>:reg</code>。你可以看到如下内容：  </li></ul><p><img src="https://youmeek.gitbooks.io/linux-tutorial/content/images/Vim-Cut-And-Paste-a-1.png" alt="vim"></p><ul><li>复制到某个剪切板的命令：<code>&quot;7y</code>，表示使用 7 号剪切板。</li><li>黏贴某个剪切板内容：<code>&quot;7p</code>，表示使用 7 号剪切板内容进行黏贴</li></ul><hr><h3 id="8-Vim-配置"><a href="#8-Vim-配置" class="headerlink" title="8.Vim 配置"></a>8.Vim 配置</h3><p>我个人本地不使用 Vim 的，基本上都是在操作服务器的时候使用，所以这里推荐这个配置文件</p><ul><li><a href="https://github.com/wklken/vim-for-server" target="_blank" rel="noopener">vim-for-server</a></li><li>在假设你已经备份好你的 Vim 配置文件后，使用该配置文件：<code>curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc &gt; ~/.vimrc</code></li><li>效果如下：  </li></ul><p><img src="https://raw.githubusercontent.com/wklken/gallery/master/vim/vim-for-server.png" alt="vim-for-server"></p><p>需要特别注意的是，如果你平时粘贴内容到终端 Vim 出现缩进错乱，一般需要这样做：</p><ul><li>进入 vim 后，按 <code>F5</code>，然后 <code>shirt + insert</code> 进行粘贴。这种事就不会错乱了。</li><li>原因是：<code>vim ~/.vimrc</code> 中有一行这样的设置：<code>set pastetoggle=&lt;F5&gt;</code></li></ul><hr><h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><blockquote><p>2018年12月26日11:35:40</p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术驿站 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 指令学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>git使用</title>
-      <link href="/2018/12/22/Git%E4%BD%BF%E7%94%A8/"/>
-      <url>/2018/12/22/Git%E4%BD%BF%E7%94%A8/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Git使用"><a href="#Git使用" class="headerlink" title="Git使用"></a>Git使用</h3><ol><li>git init  </li></ol><p>这个时候用到了第一个命令，代表初始化 git 仓库，输入 git init 之后会提示：  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543311484080.png" alt="enter description here"></p><p>可以看到初始化成了，至此 test 目录已经是一个 git 仓库了。  </p><a id="more"></a><ol start="2"><li>git status  </li></ol><p>紧接着我们输入 git status 命令，会有如下提示：  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543311575885.png" alt="enter description here"></p><p>默认就直接在 master 分支，关于分支的概念后面会提，这时最主要的是提示 a.md 文件 Untracked files ，就是说 a.md 这个文件还没有被跟踪，还没有提交在 git 仓库里呢，而且提示你可以使用 git add file 去操作你想要提交的文件。  </p><p>git status 这个命令顾名思义就是查看状态，这个命令可以算是使用最频繁的一个命令了，建议大家没事就输入下这个命令，来查看你当前 git 仓库的一些状态。  </p><ol start="3"><li>git add  </li></ol><p>上面提示 a.md 文件还没有提交到 git 仓库里，这个时候我们可以随便编辑下 a.md 文件，然后输入 git add a.md ，然后再输入 git status :  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543311641403.png" alt="enter description here"></p><p>此时提示以下文件 Changes to be committed ， 意思就是 a.md 文件等待被提交，当然你可以使用 git rm –cached 这个命令去移除这个缓存。  </p><ol start="4"><li>git commit  </li></ol><p>接着我们输入 git commit -m ‘first commit’ ，这个命令什么意思呢？ commit 是提交的意思，-m 代表是提交信息，执行了以上命令代表我们已经正式进行了第一次提交。  </p><p>这个时候再输入 git status ，会提示 nothing to commit。  </p><ol start="5"><li>git log  </li></ol><p>这个时候我们输入 git log 命令，会看到如下：  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543311753479.png" alt="enter description here"></p><p>git log 命令可以查看所有产生的 commit 记录，所以可以看到已经产生了一条 commit 记录，而提交时候的附带信息叫 ‘first commit’ 。  </p><ol start="6"><li>git add &amp; git commit</li></ol><p>看到这里估计很多人会有疑问，我想要提交直接进行 commit 不就行了么，为什么先要再 add 一次呢？首先 git add 是先把改动添加到一个「暂存区」，你可以理解成是一个缓存区域，临时保存你的改动，而 git commit 才是最后真正的提交。这样做的好处就是防止误提交，当然也有办法把这两步合并成一步，不过后面再介绍，建议新手先按部就班的一步步来。  </p><ol start="7"><li>git branch  </li></ol><p>branch 即分支的意思，分支的概念很重要，尤其是团队协作的时候，假设两个人都在做同一个项目，这个时候分支就是保证两人能协同合作的最大利器了。举个例子，A, B俩人都在做同一个项目，但是不同的模块，这个时候A新建了一个分支叫a， B新建了一个分支叫b，这样A、B做的所有代码改动都各自在各自的分支，互不影响，等到俩人都把各自的模块都做完了，最后再统一把分支合并起来。  </p><p>执行 git init 初始化git仓库之后会默认生成一个主分支 master ，也是你所在的默认分支，也基本是实际开发正式环境下的分支，一般情况下 master 分支不会轻易直接在上面操作的，你们可以输入 git branch 查看下当前分支情况：  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543311801330.png" alt="enter description here"></p><p>如果我们想在此基础上新建一个分支呢，很简单，执行 git branch a 就新建了一个名字叫 a 的分支，这时候分支 a 跟分支 master 是一模一样的内容，我们再输入 git branch 查看的当前分支情况：  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543311814443.png" alt="enter description here"></p><p>但是可以看到 master 分支前有个 * 号，即虽然新建了一个 a 的分支，但是当前所在的分支还是在 master 上，如果我们想在 a 分支上进行开发，首先要先切换到 a 分支上才行，所以下一步要切换分支  </p><ol start="8"><li>git checkout a  </li></ol><p>执行这个命令，然后再输入 git branch 查看下分支情况：  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543311859389.png" alt="enter description here"></p><p>可以看到当前我们在的分支已经是a了，这个时候 A 同学就可以尽情的在他新建的a分支去进行代码改动了。  </p><p>那有人就说了，我要先新建再切换，未免有点麻烦，有没有一步到位的，聪明：  </p><ol start="9"><li>git checkout -b a</li></ol><p>这个命令的意思就是新建一个a分支，并且自动切换到a分支。  </p><ol start="10"><li>git merge</li></ol><p>A同学在a分支代码写的不亦乐乎，终于他的功能完工了，并且测试也都ok了，准备要上线了，这个时候就需要把他的代码合并到主分支master上来，然后发布。git merge 就是合并分支用到的命令，针对这个情况，需要先做两步，第一步是切换到 master 分支，如果你已经在了就不用切换了，第二步执行 git merge a ，意思就是把a分支的代码合并过来，不出意外，这个时候a分支的代码就顺利合并到 master 分支来了。为什么说不出意外呢？因为这个时候可能会有冲突而合并失败，留个包袱，这个到后面进阶的时候再讲。  </p><ol start="11"><li>git branch -d</li></ol><p>有新建分支，那肯定有删除分支，假如这个分支新建错了，或者a分支的代码已经顺利合并到 master 分支来了，那么a分支没用了，需要删除，这个时候执行 git branch -d a 就可以把a分支删除了。</p><ol start="12"><li>git branch -D</li></ol><p>有些时候可能会删除失败，比如如果a分支的代码还没有合并到master，你执行 git branch -d a 是删除不了的，它会智能的提示你a分支还有未合并的代码，但是如果你非要删除，那就执行 git branch -D a 就可以强制删除a分支。  </p><ol start="13"><li>git tag</li></ol><p>我们在客户端开发的时候经常有版本的概念，比如v1.0、v1.1之类的，不同的版本肯定对应不同的代码，所以我一般要给我们的代码加上标签，这样假设v1.1版本出了一个新bug，但是又不晓得v1.0是不是有这个bug，有了标签就可以顺利切换到v1.0的代码，重新打个包测试了。  </p><p>所以如果想要新建一个标签很简单，比如 git tag v1.0 就代表我在当前代码状态下新建了一个v1.0的标签，输入 git tag 可以查看历史 tag 记录。  </p><p><img src="https://www.github.com/jixiyu/images3/raw/master/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1543312000142.png" alt="enter description here"></p><p>可以看到我新建了两个标签 v1.0、v1.1。  </p><p>想要切换到某个tag怎么办？也很简单，执行 git checkout v1.0 ，这样就顺利的切换到 v1.0 tag的代码状态了。  </p><p>OK，以上全是一些最基本的Git操作，而且全是在本地环境进行操作的，完全没有涉及到远程仓库，下一章节将以远程 GitHub 仓库为例，讲解下本地如何跟远程仓库一起同步协作，另外今天讲的全是最基础最简单的Git操作，一步步来，后续再继续讲解一下Git的高阶以及一些Git的酷炫操作。  </p><hr><blockquote><p><a href="https://zhuanlan.zhihu.com/p/22666153" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/22666153</a>  </p></blockquote><p>使用git在本地创建一个项目的过程  </p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~<span class="regexp">/hello-world    /</span><span class="regexp">/创建一个项目hello-world</span></span><br><span class="line"><span class="regexp">$ cd ~/</span>hello-world       <span class="comment">//打开这个项目</span></span><br><span class="line">$ git init             <span class="comment">//初始化 </span></span><br><span class="line">$ touch README</span><br><span class="line">$ git add README        <span class="comment">//更新README文件</span></span><br><span class="line">$ git commit -m <span class="string">'first commit'</span>     <span class="comment">//提交更新，并注释信息“first commit”</span></span><br><span class="line">$ git remote add origin git@github.test/hellotest.git     <span class="comment">//连接远程github项目  </span></span><br><span class="line">$ git push -u origin master     <span class="comment">//将本地项目更新到github项目上去</span></span><br></pre></td></tr></table></figure><p>git设置关闭自动换行  </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global core.autocrlf <span class="literal">false</span></span></span><br></pre></td></tr></table></figure><p>为了保证文件的换行符是以安全的方法，避免windows与unix的换行符混用的情况，最好也加上这么一句   </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global core.safecrlf <span class="literal">true</span></span></span><br></pre></td></tr></table></figure><p>git tag 使用  </p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">tag</span>  <span class="title"># 列出当前仓库的所有标签</span></span><br><span class="line"><span class="title">git</span> <span class="keyword">tag</span> <span class="title">-l</span> 'v0.<span class="number">1</span>.*'  <span class="comment"># 搜索符合当前模式的标签</span></span><br><span class="line">git <span class="keyword">tag</span> <span class="title">v0</span>.<span class="number">2.1</span>-light  <span class="comment"># 创建轻量标签</span></span><br><span class="line">git <span class="keyword">tag</span> <span class="title">-a</span> v0.<span class="number">2.1</span> -m '<span class="number">0.2</span>.<span class="number">1</span>版本'  <span class="comment"># 创建附注标签</span></span><br><span class="line">git checkout [tagname]  <span class="comment"># 切换到标签</span></span><br><span class="line">git show v0.<span class="number">2.1</span>  <span class="comment"># 查看标签版本信息</span></span><br><span class="line">git <span class="keyword">tag</span> <span class="title">-d</span> v0.<span class="number">2.1</span>  <span class="comment"># 删除标签</span></span><br><span class="line">git <span class="keyword">tag</span> <span class="title">-a</span> v0.<span class="number">2.1</span> <span class="number">9</span>fbc3d0  <span class="comment"># 补打标签</span></span><br><span class="line">git push origin v0.<span class="number">1.2</span>  <span class="comment"># 将v0.1.2标签提交到git服务器</span></span><br><span class="line">git push origin --tags  <span class="comment"># 将本地所有标签一次性提交到git服务器</span></span><br><span class="line">git <span class="keyword">tag</span>  <span class="title"># 查看当前分支下的标签</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术驿站 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 技术指令 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
   
   
-    
-    
-    <entry>
-      <title>关于我</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="正在做-gt"><a href="#正在做-gt" class="headerlink" title="正在做&gt;"></a>正在做&gt;</h2><p>读研</p><h2 id="兴趣爱好-gt"><a href="#兴趣爱好-gt" class="headerlink" title="兴趣爱好&gt;"></a>兴趣爱好&gt;</h2><ul><li>爱运动</li><li>爱旅游</li><li>爱唱歌</li></ul>]]></content>
-      
-    </entry>
-    
     
     
     <entry>
@@ -192,6 +137,17 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于我</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正在做-gt"><a href="#正在做-gt" class="headerlink" title="正在做&gt;"></a>正在做&gt;</h2><p>读研</p><h2 id="兴趣爱好-gt"><a href="#兴趣爱好-gt" class="headerlink" title="兴趣爱好&gt;"></a>兴趣爱好&gt;</h2><ul><li>爱运动</li><li>爱旅游</li><li>爱唱歌</li></ul>]]></content>
       
     </entry>
     
