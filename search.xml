@@ -157,22 +157,22 @@
     
     
     <entry>
-      <title>关于我</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>分类 &amp; 标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<h2 id="正在做-gt"><a href="#正在做-gt" class="headerlink" title="正在做&gt;"></a>正在做&gt;</h2><p>读研</p><h2 id="兴趣爱好-gt"><a href="#兴趣爱好-gt" class="headerlink" title="兴趣爱好&gt;"></a>兴趣爱好&gt;</h2><ul><li>爱运动</li><li>爱旅游</li><li>爱唱歌</li></ul>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>分类 &amp; 标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>关于我</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="正在做-gt"><a href="#正在做-gt" class="headerlink" title="正在做&gt;"></a>正在做&gt;</h2><p>读研</p><h2 id="兴趣爱好-gt"><a href="#兴趣爱好-gt" class="headerlink" title="兴趣爱好&gt;"></a>兴趣爱好&gt;</h2><ul><li>爱运动</li><li>爱旅游</li><li>爱唱歌</li></ul>]]></content>
       
     </entry>
     
