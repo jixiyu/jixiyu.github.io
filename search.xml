@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>如何搭建一条以太坊私链，并使用Ethereum Walet链接？</title>
+      <title>如何搭建一条以太坊私链，并使用Ethereum Wallet链接？</title>
       <link href="/2019/10/18/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%A7%81%E9%93%BE%E6%90%AD%E5%BB%BA%E5%B9%B6%E9%93%BE%E6%8E%A5%E9%92%B1%E5%8C%85-4/"/>
       <url>/2019/10/18/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%A7%81%E9%93%BE%E6%90%AD%E5%BB%BA%E5%B9%B6%E9%93%BE%E6%8E%A5%E9%92%B1%E5%8C%85-4/</url>
       
@@ -157,22 +157,22 @@
     
     
     <entry>
-      <title>分类 &amp; 标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>关于我</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="正在做-gt"><a href="#正在做-gt" class="headerlink" title="正在做&gt;"></a>正在做&gt;</h2><p>读研</p><h2 id="兴趣爱好-gt"><a href="#兴趣爱好-gt" class="headerlink" title="兴趣爱好&gt;"></a>兴趣爱好&gt;</h2><ul><li>爱运动</li><li>爱旅游</li><li>爱唱歌</li></ul>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>关于我</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>分类 &amp; 标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<h2 id="正在做-gt"><a href="#正在做-gt" class="headerlink" title="正在做&gt;"></a>正在做&gt;</h2><p>读研</p><h2 id="兴趣爱好-gt"><a href="#兴趣爱好-gt" class="headerlink" title="兴趣爱好&gt;"></a>兴趣爱好&gt;</h2><ul><li>爱运动</li><li>爱旅游</li><li>爱唱歌</li></ul>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
