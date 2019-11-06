@@ -15,21 +15,21 @@
 
 
 
-<meta name="description" content="在编写合约交互的过程中，需要一个web3实例用来调用合约访问账户等。 我们需要设置一个provider。为了保证不会覆盖一个已有的provider（Mist浏览器或安装了MetaMak的浏览器会提供Provider），需要先检查 web3 实例是否已存在。 123456if (typeof web3 !== &apos;undefined&apos;) &amp;#123;  web3 = new Web3(web3.cur">
-<meta name="keywords" content="Dapp开发">
+<meta name="description" content="1.背景介绍1.1 以太坊介绍以太坊是继比特币之后又一个轰动世界的产品。以太坊这个名词可能大多数人都没有听过，但是当提到比特币的话，大家应该都听过关于它的新闻。在我理解，以太坊可以被当做比特币的后辈，是对他的升级及完善。">
+<meta name="keywords" content="以太坊">
 <meta property="og:type" content="article">
-<meta property="og:title" content="合约交互时发现访问不了地址的bug">
-<meta property="og:url" content="https://jixiyu.github.io/2019/09/29/合约交互发现问题/index.html">
+<meta property="og:title" content="以太坊dapp开发篇1-环境工具介绍">
+<meta property="og:url" content="https://jixiyu.github.io/2019/11/01/以太坊开发工具环境介绍-01/index.html">
 <meta property="og:site_name" content="jixi&#39;s blog">
-<meta property="og:description" content="在编写合约交互的过程中，需要一个web3实例用来调用合约访问账户等。 我们需要设置一个provider。为了保证不会覆盖一个已有的provider（Mist浏览器或安装了MetaMak的浏览器会提供Provider），需要先检查 web3 实例是否已存在。 123456if (typeof web3 !== &apos;undefined&apos;) &amp;#123;  web3 = new Web3(web3.cur">
+<meta property="og:description" content="1.背景介绍1.1 以太坊介绍以太坊是继比特币之后又一个轰动世界的产品。以太坊这个名词可能大多数人都没有听过，但是当提到比特币的话，大家应该都听过关于它的新闻。在我理解，以太坊可以被当做比特币的后辈，是对他的升级及完善。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7pom0ilibj31ty0hs786.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7popvzpv6j31hm08kdhx.jpg">
-<meta property="og:updated_time" content="2019-10-08T03:27:17.626Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8oboe487gj30ju0xaju4.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8obptnh61j31980ngn5u.jpg">
+<meta property="og:updated_time" content="2019-11-06T08:01:29.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="合约交互时发现访问不了地址的bug">
-<meta name="twitter:description" content="在编写合约交互的过程中，需要一个web3实例用来调用合约访问账户等。 我们需要设置一个provider。为了保证不会覆盖一个已有的provider（Mist浏览器或安装了MetaMak的浏览器会提供Provider），需要先检查 web3 实例是否已存在。 123456if (typeof web3 !== &apos;undefined&apos;) &amp;#123;  web3 = new Web3(web3.cur">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7pom0ilibj31ty0hs786.jpg">
+<meta name="twitter:title" content="以太坊dapp开发篇1-环境工具介绍">
+<meta name="twitter:description" content="1.背景介绍1.1 以太坊介绍以太坊是继比特币之后又一个轰动世界的产品。以太坊这个名词可能大多数人都没有听过，但是当提到比特币的话，大家应该都听过关于它的新闻。在我理解，以太坊可以被当做比特币的后辈，是对他的升级及完善。">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8oboe487gj30ju0xaju4.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -61,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>合约交互时发现访问不了地址的bug | jixi&#39;s blog</title>
+<title>以太坊dapp开发篇1-环境工具介绍 | jixi&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -265,11 +265,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-合约交互发现问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-以太坊开发工具环境介绍-01" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/09/29/合约交互发现问题/" class="article-date">
-      <time datetime="2019-09-29T02:17:16.000Z" itemprop="datePublished">2019-09-29</time>
+      <a href="/2019/11/01/以太坊开发工具环境介绍-01/" class="article-date">
+      <time datetime="2019-11-01T02:17:16.000Z" itemprop="datePublished">2019-11-01</time>
 </a>
 
 
@@ -284,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      合约交互时发现访问不了地址的bug
+      以太坊dapp开发篇1-环境工具介绍
     </h1>
   
 
@@ -299,7 +299,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dapp开发/">Dapp开发</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/以太坊/">以太坊</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -309,30 +309,52 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在编写合约交互的过程中，需要一个<strong>web3</strong>实例用来调用合约访问账户等。</p>
-<p>我们需要设置一个provider。为了保证不会覆盖一个已有的provider（Mist浏览器或安装了MetaMak的浏览器会提供Provider），需要先检查 <strong>web3</strong> 实例是否已存在。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> web3 !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(web3.currentProvider);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// set the provider you want from Web3.providers</span></span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(<span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">"http://localhost:8545"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以使用<strong>web3</strong>提供的接口方法了。比如：</p>
+        <h1 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1.背景介绍"></a>1.背景介绍</h1><h3 id="1-1-以太坊介绍"><a href="#1-1-以太坊介绍" class="headerlink" title="1.1 以太坊介绍"></a>1.1 以太坊介绍</h3><p>以太坊是继比特币之后又一个轰动世界的产品。以太坊这个名词可能大多数人都没有听过，但是当提到比特币的话，大家应该都听过关于它的新闻。在我理解，以太坊可以被当做比特币的后辈，是对他的升级及完善。</p>
 <a id="more"></a>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.defaultAccount</span><br><span class="line">web3.eth.getBalance</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>以太坊被称为区块链2.0，是由俄罗斯开发者<strong>Vitalik Buterin</strong>（V神）在2013年创建的，它针对比特币系统缺少图灵完备等缺点，建立了一个<strong>可编程、图灵完备</strong>的区块链。</p>
+<p>区别于比特币，以太坊最大的一个特点就是：它允许任何人通过<strong>智能合约</strong>在平台上建立和使用去中心化应用Dapp（Decentralized Application）。</p>
+<blockquote>
+<p>图灵完备：一切可计算的问题都能通过计算解决。</p>
+</blockquote>
+<h3 id="1-2-智能合约"><a href="#1-2-智能合约" class="headerlink" title="1.2 智能合约"></a>1.2 智能合约</h3><p>智能合约，顾名思义，好像很智能的样子，但其实它并不智能，它的本质就是要一段链上永久保存并且公开的代码。</p>
+<p>智能合约是以太坊网络上的一种特殊账户，被称为内部账户，与以太坊上外部账户所区别，但他们所用的数据结构是一致的。</p>
+<p>我认为在以太坊上，智能合约的编写尤其重要，是开发dapp的首要且最重要的事情。因为智能合约一旦部署成功上链，如果有漏洞的话那就会造成巨大的经济损失。</p>
+<h3 id="1-3-IPFS介绍"><a href="#1-3-IPFS介绍" class="headerlink" title="1.3 IPFS介绍"></a>1.3 IPFS介绍</h3><p>ipfs（InterPlanetary File System），中文名被称为星际文件系统，没有深入接触过区块链的可能都没听过。我刚开始进组的时候老师就让我看这个，现在看来很有先见之明。我当时刚听到这个名词也是一脸懵，赶紧去查了资料，目前也算是入门的状态了。</p>
+<p>ipfs是一种内容可寻址的对等超媒体分发协议。在IPFS网络中的节点将构成一个分布式文件系统。它是一个开放源代码项目，自2014年开始由Protocol Labs （协议实验室）在开源社区的帮助下发展。其最初由Juan Benet设计。</p>
+<p>大家下载可能都用过迅雷，他是p2p（点对点）传输文件的形式，但迅雷众所周知是一个以营业为目的的企业，当用户提出下载需求时，总服务器维护一个负责搜寻资源的种子搜索器，负责为这个需求分配资源及连接用户。它的局限性就在于存在单点失败的可能性，中心服务器崩了，用户所有的需求就满足不了了。</p>
+<p>区别于迅雷，ipfs是每个用户都维护着全网共同的信息，没有中心节点，不存在单点失败的可能性。</p>
+<p>ipfs一般都是与以太坊开发结合起来，负责存储文件，而区块链只需要存储ipfs返回的hash值就可以了。用户可以通过在链上查询hash值，接着在ipfs系统里得到文件。</p>
+<h1 id="2-开发环境介绍"><a href="#2-开发环境介绍" class="headerlink" title="2.开发环境介绍"></a>2.开发环境介绍</h1><h3 id="2-1-mac-linux系统"><a href="#2-1-mac-linux系统" class="headerlink" title="2.1 mac/linux系统"></a>2.1 mac/linux系统</h3><p>本机开发dapp是在mac系统上实现的，但是在windows系统上也可以实现开发，大致原理基本相通，除了安装开发环境和安装依赖外有点不太一样。</p>
+<h3 id="2-2-nodejs"><a href="#2-2-nodejs" class="headerlink" title="2.2 nodejs"></a>2.2 nodejs</h3><p>本机的大环境是基于nodejs实现的，Node.js是一个让JavaScript运行在服务器端的开发平台，它让JavaScript的触角伸到了服务器端。</p>
+<p>nodejs强大之处就在于它的npm工具，可以导入全球优秀开发者所贡献的开源依赖包，这使得nodejs这门语言异常强大。</p>
+<p><strong>安装：</strong></p>
+<p><code>brew install node</code></p>
+<h3 id="2-3-ipfs"><a href="#2-3-ipfs" class="headerlink" title="2.3 ipfs"></a>2.3 ipfs</h3><p><strong>安装：（前提得下载golang）</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">brew install go</span><br><span class="line"></span><br><span class="line">配置gopath和goroot</span><br><span class="line">vi ~/.bash_profile</span><br><span class="line"></span><br><span class="line">export GOPATH="/Users/apple/go"</span><br><span class="line">export <span class="built_in">PATH</span>=$<span class="built_in">PATH</span>:$GOPATH/bin</span><br><span class="line"></span><br><span class="line">//调用生效</span><br><span class="line">. ~/.bash_profile</span><br><span class="line"></span><br><span class="line">//guthub上下载压缩包至本地</span><br><span class="line">//解压</span><br><span class="line">tar xvfz go-ipfs.tar.gz</span><br><span class="line"></span><br><span class="line">//安装</span><br><span class="line"><span class="built_in">cd</span> go-ipfs</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
 
-<p>启动程序<code>npm run dev</code>，打开了浏览器3000端口访问到了首页界面。</p>
-<p>但是发现控制台console出现了错误提示：<strong>invalid address</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7pom0ilibj31ty0hs786.jpg" alt="image-20191007154528876"></p>
-<p>以为是本地由Ganache软件生成的账号程序访问不到。</p>
-<p>上网找解决方法都说账户需要解锁，也就是调用web3的解锁账户的命令。</p>
-<p><code>web3.eth.personal.unlockAccount(web3.eth.defaultAccount).then(console.log(&#39;Account unlocked!&#39;));</code></p>
-<p>但是运行了之后提醒<code>unlockcount</code>函数不存在。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7popvzpv6j31hm08kdhx.jpg" alt="image-20191007154917354"></p>
-<p>之后偶然在网上搜索”metamask访问不了账户地址“这个问题，终于问题得到了解决。</p>
-<p><a href="https://blog.csdn.net/rejames/article/details/89876967" target="_blank" rel="noopener">https://blog.csdn.net/rejames/article/details/89876967</a></p>
-<p>原来最新版的metamask插件默认启用了隐私模式，而官方文档中并没有更新。</p>
-<p>现在新的检查方式为：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查是否是新的MetaMask 或 DApp浏览器</span></span><br><span class="line"><span class="keyword">var</span> web3Provider;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.ethereum) &#123;</span><br><span class="line">   web3Provider = <span class="built_in">window</span>.ethereum;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 请求用户授权</span></span><br><span class="line">    <span class="keyword">await</span> <span class="built_in">window</span>.ethereum.enable();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="comment">// 用户不授权时</span></span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">"User denied account access"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.web3) &#123;   <span class="comment">// 老版 MetaMask Legacy dapp browsers...</span></span><br><span class="line">  web3Provider = <span class="built_in">window</span>.web3.currentProvider;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  web3Provider = <span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">'http://localhost:8545'</span>);</span><br><span class="line">&#125;</span><br><span class="line">web3 = <span class="keyword">new</span> Web3(web3Provider);</span><br></pre></td></tr></table></figure>
+<h1 id="3-开发工具介绍"><a href="#3-开发工具介绍" class="headerlink" title="3.开发工具介绍"></a>3.开发工具介绍</h1><h3 id="3-1-metamask插件"><a href="#3-1-metamask插件" class="headerlink" title="3.1 metamask插件"></a>3.1 metamask插件</h3><p>MetaMask 是 Google Chrome 浏览器的扩展，将以太坊与 Google Chrome 结合，在 Chrome 浏览器上运行以太坊dapp以及身份识别的工具。它允许用户管理自己的账户，通过 Web3 JavaScript API，让dapp与以太坊区块链实现交互。</p>
+<p>可以直接在Google扩展中查找安装。</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8oboe487gj30ju0xaju4.jpg" alt="image-20191106145249031" style="zoom:33%;">
 
-<p>成功引入后，你现在可以使用 web3 对象的API 了。</p>
+<h3 id="3-2-Ganache"><a href="#3-2-Ganache" class="headerlink" title="3.2 Ganache"></a>3.2 Ganache</h3><p>Ganache是一个为开发者提供的私有 Ethereum 区块链客户端, 可以用于本地部署, 开发, 测试应用程序, 测试代码，支持 Windows, MacOS 和 Linux 操作系统。</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8obptnh61j31980ngn5u.jpg" alt="image-20191106145412226" style="zoom: 33%;">
+
+<h3 id="3-3-VScode"><a href="#3-3-VScode" class="headerlink" title="3.3 VScode"></a>3.3 VScode</h3><p>我习惯用vscode编写代码了，感觉界面优秀，画风很舒服。也可以用其他的编辑器来编写，比如sublime等等。</p>
+<h1 id="4-所需知识"><a href="#4-所需知识" class="headerlink" title="4.所需知识"></a>4.所需知识</h1><h3 id="4-1-solidity"><a href="#4-1-solidity" class="headerlink" title="4.1 solidity"></a>4.1 solidity</h3><p>Solidity 是一门面向合约的、为实现智能合约而创建的高级编程语言。它是类js脚本语言，基本用法跟js语法差不多，稍微有些不同的差异。</p>
+<blockquote>
+<p>目前尝试 Solidity 编程的最好的方式是使用<strong>Remix</strong>。Remix 是一个基于 Web 浏览器的 IDE，它可以让你编写 Solidity 智能合约，然后部署并运行该智能合约。</p>
+</blockquote>
+<h3 id="4-2-truffle"><a href="#4-2-truffle" class="headerlink" title="4.2 truffle"></a>4.2 truffle</h3><p>Truffle是针对基于以太坊的Solidity语言的一套开发框架。本身基于Javascript。</p>
+<p>truffle框架如果是新手入门的话会上手快一些，但是我就经常遇到solidity语言版本和solc编译器不一致、编译经常报错的情况，所以现在都是手动导入solc，自己编译。</p>
+<h3 id="4-3-Web3"><a href="#4-3-Web3" class="headerlink" title="4.3 Web3"></a>4.3 Web3</h3><p>为了让dapp能够访问区块链上的数据，一种选择是使用web3.js提供的<code>web3</code>对象。底层实现上，它通过RPC 调用与本地节点通信。web3.js可以与任何暴露了RPC接口的区块链节点连接。</p>
+<h3 id="4-4-React"><a href="#4-4-React" class="headerlink" title="4.4 React"></a>4.4 React</h3><p>React.js是前端三大新框架：Angular.js、React.js、Vue.js之一，这三大新框架的很多理念是相同的，但是也有各自的特点。</p>
+<p>React起源于Facebook的内部项目，因为该公司对市场上所有 JavaScript MVC 框架，都不满意，就决定自己写一套，用来架设Instagram 的网站。做出来以后，发现这套东西很好用，就在2013年5月开源了。</p>
+<p>React可以作为一个js库来使用，我们在页面上引用相关的js文件，就可以使用它来做一些页面效果。</p>
+<p>React也可以将界面拆分成一个个的组件，通过组件来构建界面，然后用自动化工具来生成单页面(SPA - single page application)应用系统。</p>
+<p>本机就以React框架来实现所有的前端呈现和逻辑交互功能。</p>
+<hr>
+<p>下一篇就讲如何使用solidity语言来编写智能合约。</p>
 
       
     </div>
@@ -341,13 +363,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/09/29/合约交互发现问题/">合约交互时发现访问不了地址的bug</a></p>
+        <p><span>Title:</span><a href="/2019/11/01/以太坊开发工具环境介绍-01/">以太坊dapp开发篇1-环境工具介绍</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">jixi</a></p>
-        <p><span>Created:</span>2019-09-29, 10:17:16</p>
-        <p><span>Updated:</span>2019-10-08, 11:27:17</p>
+        <p><span>Created:</span>2019-11-01, 10:17:16</p>
+        <p><span>Updated:</span>2019-11-06, 16:01:29</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/09/29/合约交互发现问题/" title="合约交互时发现访问不了地址的bug">https://jixiyu.github.io/2019/09/29/合约交互发现问题/</a>
-            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/09/29/合约交互发现问题/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2019/11/01/以太坊开发工具环境介绍-01/" title="以太坊dapp开发篇1-环境工具介绍">https://jixiyu.github.io/2019/11/01/以太坊开发工具环境介绍-01/</a>
+            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/11/01/以太坊开发工具环境介绍-01/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -359,16 +381,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/10/18/以太坊私链搭建并链接钱包-4/">
-                    如何搭建一条以太坊私链，并使用Ethereum Wallet链接？
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/09/26/ipfs学习/">
-                    ipfs使用
+                <a href="/2019/10/18/以太坊私链搭建并链接钱包-4/">
+                    如何搭建一条以太坊私链，并使用Ethereum Wallet链接？
                 </a>
             </div>
         
@@ -380,7 +396,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-背景介绍"><span class="toc-number">1.</span> <span class="toc-text">1.背景介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-以太坊介绍"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 以太坊介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-智能合约"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 智能合约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-IPFS介绍"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3 IPFS介绍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-开发环境介绍"><span class="toc-number">2.</span> <span class="toc-text">2.开发环境介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-mac-linux系统"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1 mac/linux系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-nodejs"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2 nodejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-ipfs"><span class="toc-number">2.0.3.</span> <span class="toc-text">2.3 ipfs</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-开发工具介绍"><span class="toc-number">3.</span> <span class="toc-text">3.开发工具介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-metamask插件"><span class="toc-number">3.0.1.</span> <span class="toc-text">3.1 metamask插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Ganache"><span class="toc-number">3.0.2.</span> <span class="toc-text">3.2 Ganache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-VScode"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.3 VScode</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-所需知识"><span class="toc-number">4.</span> <span class="toc-text">4.所需知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-solidity"><span class="toc-number">4.0.1.</span> <span class="toc-text">4.1 solidity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-truffle"><span class="toc-number">4.0.2.</span> <span class="toc-text">4.2 truffle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Web3"><span class="toc-number">4.0.3.</span> <span class="toc-text">4.3 Web3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-React"><span class="toc-number">4.0.4.</span> <span class="toc-text">4.4 React</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -416,7 +432,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"合约交互时发现访问不了地址的bug　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"以太坊dapp开发篇1-环境工具介绍　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -435,8 +451,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'https://jixiyu.github.io/2019/09/29/合约交互发现问题/';
-            this.page.identifier = '2019/09/29/合约交互发现问题/';
+            this.page.url = 'https://jixiyu.github.io/2019/11/01/以太坊开发工具环境介绍-01/';
+            this.page.identifier = '2019/11/01/以太坊开发工具环境介绍-01/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -458,15 +474,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/10/18/以太坊私链搭建并链接钱包-4/" title="Pre: 如何搭建一条以太坊私链，并使用Ethereum Wallet链接？">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/09/26/ipfs学习/" title="Next: ipfs使用">
+            <a href="/2019/10/18/以太坊私链搭建并链接钱包-4/" title="Next: 如何搭建一条以太坊私链，并使用Ethereum Wallet链接？">
                 <i class="fa fa-angle-right"></i>
             </a>
         
