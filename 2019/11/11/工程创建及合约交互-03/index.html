@@ -14,17 +14,34 @@
 <meta name="author" content="jixi">
 
 
-    
-    
 
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="jixi&#39;s blog">
-<meta property="og:url" content="https://jixiyu.github.io/index.html">
+<meta name="description" content="1.工程创建1.1 环境准备之前我们已经下载了nodejs开发环境，nodejs自带npm工具，npm相当于一个包管理器。我们使用npm命令下载安装一个构建React单页面应用的脚手架工具create-react-app。 npm install -g create-react-app 接着我们创建一个空的项目 create-react-app lottery-xiaoye-github 创建成功">
+<meta name="keywords" content="以太坊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊dapp开发篇3-工程创建及合约交互">
+<meta property="og:url" content="https://jixiyu.github.io/2019/11/11/工程创建及合约交互-03/index.html">
 <meta property="og:site_name" content="jixi&#39;s blog">
+<meta property="og:description" content="1.工程创建1.1 环境准备之前我们已经下载了nodejs开发环境，nodejs自带npm工具，npm相当于一个包管理器。我们使用npm命令下载安装一个构建React单页面应用的脚手架工具create-react-app。 npm install -g create-react-app 接着我们创建一个空的项目 create-react-app lottery-xiaoye-github 创建成功">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8u3a0dnjsj309h0cxq3g.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8u3gbbuvkj30jb05qmxi.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8u3h8r6t2j31us0rm40m.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8wc4s01q2j30en07x0tc.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8wc6dykxuj30dv0buwg0.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8wckngo40j30n403iglp.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g8wd9hn1ofj31y00t6aez.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g8wdgieculj316u0g83zw.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8we0dc4mlj309c05hdfy.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8we63zv8sj31lc0bgadi.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8weff2dx0j30jq0xcgon.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8welps3jwj31y60ceq87.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8wf091rnhj3136092mxx.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8wgj5p05nj30xw0euq4r.jpg">
+<meta property="og:updated_time" content="2019-11-13T07:48:10.445Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jixi&#39;s blog">
+<meta name="twitter:title" content="以太坊dapp开发篇3-工程创建及合约交互">
+<meta name="twitter:description" content="1.工程创建1.1 环境准备之前我们已经下载了nodejs开发环境，nodejs自带npm工具，npm相当于一个包管理器。我们使用npm命令下载安装一个构建React单页面应用的脚手架工具create-react-app。 npm install -g create-react-app 接着我们创建一个空的项目 create-react-app lottery-xiaoye-github 创建成功">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8u3a0dnjsj309h0cxq3g.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -52,13 +69,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>jixi&#39;s blog</title>
+<title>以太坊dapp开发篇3-工程创建及合约交互 | jixi&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,8 +82,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -262,9 +277,7 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-工程创建及合约交互-03" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-工程创建及合约交互-03" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2019/11/11/工程创建及合约交互-03/" class="article-date">
@@ -282,12 +295,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/工程创建及合约交互-03/">以太坊dapp开发篇3-工程创建及合约交互</a>
+    <h1 class="article-title" itemprop="name">
+      以太坊dapp开发篇3-工程创建及合约交互
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/以太坊/">以太坊</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -432,633 +460,141 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/以太坊/">以太坊</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-solidity编写合约-02" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/11/03/solidity编写合约-02/" class="article-date">
-      <time datetime="2019-11-03T02:17:16.000Z" itemprop="datePublished">2019-11-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/03/solidity编写合约-02/">以太坊dapp开发篇2-solidity编写合约</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="1-dapp功能介绍"><a href="#1-dapp功能介绍" class="headerlink" title="1.dapp功能介绍"></a>1.dapp功能介绍</h1><p>就以一个彩票dapp为例，大致的理念就是任何人都可以投注每一期，然后每一期由管理员开奖，等概率抽中某个人，抽中的人就意味着中奖了。</p>
-<p>1.全民参与</p>
-<p>2.每一注只能投一个eth</p>
-<p>3.每个人可以投注多次    </p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/以太坊/">以太坊</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/11/03/solidity编写合约-02/#more">more >></a>
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/11/11/工程创建及合约交互-03/">以太坊dapp开发篇3-工程创建及合约交互</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">jixi</a></p>
+        <p><span>Created:</span>2019-11-11, 10:17:16</p>
+        <p><span>Updated:</span>2019-11-13, 15:48:10</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/11/11/工程创建及合约交互-03/" title="以太坊dapp开发篇3-工程创建及合约交互">https://jixiyu.github.io/2019/11/11/工程创建及合约交互-03/</a>
+            <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/11/11/工程创建及合约交互-03/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-以太坊开发工具环境介绍-01" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/11/01/以太坊开发工具环境介绍-01/" class="article-date">
-      <time datetime="2019-11-01T02:17:16.000Z" itemprop="datePublished">2019-11-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/以太坊开发工具环境介绍-01/">以太坊dapp开发篇1-环境工具介绍</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1.背景介绍"></a>1.背景介绍</h1><h3 id="1-1-以太坊介绍"><a href="#1-1-以太坊介绍" class="headerlink" title="1.1 以太坊介绍"></a>1.1 以太坊介绍</h3><p>以太坊是继比特币之后又一个轰动世界的产品。以太坊这个名词可能大多数人都没有听过，但是当提到比特币的话，大家应该都听过关于它的新闻。在我理解，以太坊可以被当做比特币的后辈，是对他的升级及完善。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/以太坊/">以太坊</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/11/01/以太坊开发工具环境介绍-01/#more">more >></a>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
-  
-</article>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-以太坊私链搭建并链接钱包-4" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/10/18/以太坊私链搭建并链接钱包-4/" class="article-date">
-      <time datetime="2019-10-18T02:17:16.000Z" itemprop="datePublished">2019-10-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/18/以太坊私链搭建并链接钱包-4/">如何搭建一条以太坊私链，并使用Ethereum Wallet链接？</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="1-开发环境介绍"><a href="#1-开发环境介绍" class="headerlink" title="1.开发环境介绍"></a>1.开发环境介绍</h1><ol>
-<li><p><code>Geth(go-ethereum)</code>版本  ——1.8.27</p>
-<p>Go-ethereum客户端通常被称为Geth，它是个命令行界面，执行在Go上实现的完整以太坊节点。</p>
-<p>通过Geth，可以实现以太坊的各种功能，如账户的新建删除，挖矿，ether币的转移，智能合约的部署和执行等等。</p>
-</li>
-<li><p><code>go</code>版本——<code>go version go1.9.2 darwin/amd64</code></p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g828rh24wjj30l807u3zi.jpg" alt="image-20191018122933436" style="zoom:50%;">
-</li>
-<li><p><code>mac</code>开发环境</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dapp开发/">Dapp开发</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/10/18/以太坊私链搭建并链接钱包-4/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-合约交互发现问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/29/合约交互发现问题/" class="article-date">
-      <time datetime="2019-09-29T02:17:16.000Z" itemprop="datePublished">2019-09-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/29/合约交互发现问题/">合约交互时发现访问不了地址的bug</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>在编写合约交互的过程中，需要一个<strong>web3</strong>实例用来调用合约访问账户等。</p>
-<p>我们需要设置一个provider。为了保证不会覆盖一个已有的provider（Mist浏览器或安装了MetaMak的浏览器会提供Provider），需要先检查 <strong>web3</strong> 实例是否已存在。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> web3 !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(web3.currentProvider);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// set the provider you want from Web3.providers</span></span><br><span class="line">  web3 = <span class="keyword">new</span> Web3(<span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">"http://localhost:8545"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以使用<strong>web3</strong>提供的接口方法了。比如：</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dapp开发/">Dapp开发</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/09/29/合约交互发现问题/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ipfs学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/26/ipfs学习/" class="article-date">
-      <time datetime="2019-09-26T02:17:16.000Z" itemprop="datePublished">2019-09-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/11/03/solidity编写合约-02/">
+                    以太坊dapp开发篇2-solidity编写合约
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/26/ipfs学习/">ipfs使用</a>
-    </h1>
-  
+    </nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h4 id="1-mac安装ipfs——使用npm工具"><a href="#1-mac安装ipfs——使用npm工具" class="headerlink" title="1.mac安装ipfs——使用npm工具"></a>1.mac安装ipfs——使用npm工具</h4><p><code>sudo npm install ipfs --global</code></p>
-<h4 id="2-本地上传文件并同步网络"><a href="#2-本地上传文件并同步网络" class="headerlink" title="2.本地上传文件并同步网络"></a>2.本地上传文件并同步网络</h4><ol>
-<li><p><code>touch index.html</code></p>
-</li>
-<li><p><code>vim index.html</code></p>
-</li>
-<li><p>初始化过程，生成本地节点</p>
-</li>
-</ol>
-<p><code>ipfs init</code> </p>
-<ol start="4">
-<li>保存在本地ipfs</li>
-</ol>
-<p><code>ipfs add index.html</code></p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7d3ay3cp0j30w0070abd.jpg" alt="image-20190926182126347" style="zoom:50%;">
-
-<ol start="5">
-<li>同步到网络中</li>
-</ol>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ipfs/">ipfs</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/09/26/ipfs学习/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-vscode_debug" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/17/vscode_debug/" class="article-date">
-      <time datetime="2019-09-17T08:17:16.000Z" itemprop="datePublished">2019-09-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/17/vscode_debug/">vscode debug</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h4 id="1、为什么需要调试"><a href="#1、为什么需要调试" class="headerlink" title="1、为什么需要调试"></a>1、为什么需要调试</h4><p>写了很多行代码，但是有时候运行的时候遇到了未知的错误，不知道错在哪，有时候错误是某个参数未定义，path找不到等等，这个时候我们就怀疑是值未传递到设置好的参数内，所以可以使用输出语句，但是懂调试的话是写程序的一大利器，且效率极高。</p>
-<p>还有就是console.log这种语句写够了！</p>
-<p>最近一直用vscode写后端和前端，一直在接触nodejs语言，但是一直都不怎么了解vscode的调试，所以决心来学习一下。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/09/17/vscode_debug/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2019年09月18日小技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/17/2019年09月18日小技巧/" class="article-date">
-      <time datetime="2019-09-17T02:17:16.000Z" itemprop="datePublished">2019-09-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-工程创建"><span class="toc-number">1.</span> <span class="toc-text">1.工程创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-环境准备"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-项目依赖安装"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 项目依赖安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-清理工程"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3 清理工程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-合约编译部署"><span class="toc-number">2.</span> <span class="toc-text">2.合约编译部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-合约编译"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1 合约编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-合约部署"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2  合约部署</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-初始化web3及合约实例生成"><span class="toc-number">3.</span> <span class="toc-text">3.初始化web3及合约实例生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-web3初始化"><span class="toc-number">3.0.1.</span> <span class="toc-text">3.1 web3初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-合约实例生成"><span class="toc-number">3.0.2.</span> <span class="toc-text">3.2  合约实例生成</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-合约交互"><span class="toc-number">4.</span> <span class="toc-text">4.合约交互</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-得到合约数据"><span class="toc-number">4.0.1.</span> <span class="toc-text">4.1 得到合约数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-数据显示到网页中"><span class="toc-number">4.0.2.</span> <span class="toc-text">4.2 数据显示到网页中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-取得所有数据呈现"><span class="toc-number">4.0.3.</span> <span class="toc-text">4.3 取得所有数据呈现</span></a></li></ol></li></ol></li></ol>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/17/2019年09月18日小技巧/">小技巧</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="1、实现chrome全浏览器截图"><a href="#1、实现chrome全浏览器截图" class="headerlink" title="1、实现chrome全浏览器截图"></a>1、实现chrome全浏览器截图</h3><ul>
-<li>右键检查元素</li>
-<li>（mac）win+shift+P</li>
-<li>screen</li>
-<li>full node screen</li>
-<li>保存下图片</li>
-</ul>
-<h3 id="2、word消除所有空行"><a href="#2、word消除所有空行" class="headerlink" title="2、word消除所有空行"></a>2、word消除所有空行</h3><ul>
-<li>选择替换功能</li>
-<li>^p^p替换成^p</li>
-<li>循环多次可实现</li>
-</ul>
-          
-      
     </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/09/17/2019年09月18日小技巧/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
+<div class="share">
     
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/26/markdown语法/" class="article-date">
-      <time datetime="2018-12-26T12:17:16.000Z" itemprop="datePublished">2018-12-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"以太坊dapp开发篇3-工程创建及合约交互　| jixi's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
     
-      <input type="hidden" class="isFancy" />
+
     
+</div>
+
+
+
+
+
+
+
     
-      <header class="article-header">
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'https://jixiyu.github.io/2019/11/11/工程创建及合约交互-03/';
+            this.page.identifier = '2019/11/11/工程创建及合约交互-03/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//jixi.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/26/markdown语法/">markdown语法说明</a>
-    </h1>
-  
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <blockquote>
-<p>markdown语法说明<br>2018年12月26日09:55:41<br>62 篇   </p>
-</blockquote>
-<h3 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h3><p>Markdown是一种轻量级标记语言，它以纯文本形式(易读、易写、易更改)编写文档，并最终以HTML格式发布。  </p>
-<p>Markdown也可以理解为将以MARKDOWN语言编写的语言转换成HTML内容的工具，最初是一个perl脚本Markdown.pl。  </p>
-<p>下面正文，Markdown语法主要分为如下几大部分：  </p>
-<p><b>标题，段落，区块引用，代码区块，强调，列表，分割线，链接，图片，反斜杠 \，符号’`’。</b>  </p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术驿站/">技术驿站</a>
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/11/03/solidity编写合约-02/" title="Next: 以太坊dapp开发篇2-solidity编写合约">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术指令/">技术指令</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/12/26/markdown语法/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/工程创建及合约交互-03/">以太坊dapp开发篇3-工程创建及合约交互</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/03/solidity编写合约-02/">以太坊dapp开发篇2-solidity编写合约</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/以太坊开发工具环境介绍-01/">以太坊dapp开发篇1-环境工具介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/18/以太坊私链搭建并链接钱包-4/">如何搭建一条以太坊私链，并使用Ethereum Wallet链接？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/29/合约交互发现问题/">合约交互时发现访问不了地址的bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/ipfs学习/">ipfs使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/vscode_debug/">vscode debug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/2019年09月18日小技巧/">小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/26/markdown语法/">markdown语法说明</a></li></ul>
 
 
 
 
-
-
-
-
-
-  
-  
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
