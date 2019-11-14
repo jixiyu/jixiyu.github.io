@@ -15,13 +15,13 @@
 
 
 
-<meta name="description" content="1.界面设计1.1 介绍上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。 界面整体应该如下模样：   下面我们为了这个目标制作吧！ 1.2 引入semantic react记得第3章的时候，我们安装依赖时，安装了以下两个依赖： 12&quot;semantic-ui-css&quot;: &quot;">
+<meta name="description" content="1.界面设计1.1 介绍上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。 界面整体应该如下模样：">
 <meta name="keywords" content="以太坊">
 <meta property="og:type" content="article">
 <meta property="og:title" content="以太坊dapp开发篇4-界面设计与触发合约">
 <meta property="og:url" content="https://jixiyu.github.io/2019/11/14/界面设计与触发合约-04/index.html">
 <meta property="og:site_name" content="jixi&#39;s blog">
-<meta property="og:description" content="1.界面设计1.1 介绍上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。 界面整体应该如下模样：   下面我们为了这个目标制作吧！ 1.2 引入semantic react记得第3章的时候，我们安装依赖时，安装了以下两个依赖： 12&quot;semantic-ui-css&quot;: &quot;">
+<meta property="og:description" content="1.界面设计1.1 介绍上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。 界面整体应该如下模样：">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjhao8y6j307y0mz0ux.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjldbmejj30tb0htacs.jpg">
@@ -34,10 +34,10 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xlfxlmc2j30s603c3zc.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xlgb5g1nj309y0230so.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xliv4aojj30810o840x.jpg">
-<meta property="og:updated_time" content="2019-11-14T07:30:55.180Z">
+<meta property="og:updated_time" content="2019-11-14T07:40:28.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊dapp开发篇4-界面设计与触发合约">
-<meta name="twitter:description" content="1.界面设计1.1 介绍上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。 界面整体应该如下模样：   下面我们为了这个目标制作吧！ 1.2 引入semantic react记得第3章的时候，我们安装依赖时，安装了以下两个依赖： 12&quot;semantic-ui-css&quot;: &quot;">
+<meta name="twitter:description" content="1.界面设计1.1 介绍上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。 界面整体应该如下模样：">
 <meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjhao8y6j307y0mz0ux.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -320,6 +320,8 @@
           
         <h1 id="1-界面设计"><a href="#1-界面设计" class="headerlink" title="1.界面设计"></a>1.界面设计</h1><h3 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1 介绍"></a>1.1 介绍</h3><p>上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。</p>
 <p>界面整体应该如下模样：</p>
+<a id="more"></a>
+
 <img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjhao8y6j307y0mz0ux.jpg" alt="image-20191114141253632" style="zoom:67%;">
 
 <p>下面我们为了这个目标制作吧！</p>
@@ -420,7 +422,7 @@
         <p><span>Title:</span><a href="/2019/11/14/界面设计与触发合约-04/">以太坊dapp开发篇4-界面设计与触发合约</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">jixi</a></p>
         <p><span>Created:</span>2019-11-14, 10:17:16</p>
-        <p><span>Updated:</span>2019-11-14, 15:30:55</p>
+        <p><span>Updated:</span>2019-11-14, 15:40:28</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/11/14/界面设计与触发合约-04/" title="以太坊dapp开发篇4-界面设计与触发合约">https://jixiyu.github.io/2019/11/14/界面设计与触发合约-04/</a>
             <span class="copy-path" data-clipboard-text="From https://jixiyu.github.io/2019/11/14/界面设计与触发合约-04/　　By jixi" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>

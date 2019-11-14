@@ -293,98 +293,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="1-界面设计"><a href="#1-界面设计" class="headerlink" title="1.界面设计"></a>1.界面设计</h1><h3 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1 介绍"></a>1.1 介绍</h3><p>上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。</p>
+              <h1 id="1-界面设计"><a href="#1-界面设计" class="headerlink" title="1.界面设计"></a>1.界面设计</h1><h3 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1 介绍"></a>1.1 介绍</h3><p>上章我们把链上数据已经能够通过web3接口获取到，并且利用React前端框架展示了链上数据。这章我们主要将页面设计好，并且将合约中的函数能够调用起来，完成开奖，退奖，投注行为。</p>
 <p>界面整体应该如下模样：</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjhao8y6j307y0mz0ux.jpg" alt="image-20191114141253632" style="zoom:67%;">
-
-<p>下面我们为了这个目标制作吧！</p>
-<h3 id="1-2-引入semantic-react"><a href="#1-2-引入semantic-react" class="headerlink" title="1.2 引入semantic react"></a>1.2 引入semantic react</h3><p>记得第3章的时候，我们安装依赖时，安装了以下两个依赖：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"semantic-ui-css"</span>: <span class="string">"^2.4.1"</span>,</span><br><span class="line"><span class="string">"semantic-ui-react"</span>: <span class="string">"^0.83.0"</span>,</span><br></pre></td></tr></table></figure>
-
-<p>他们就是负责我们的页面设计了。</p>
-<p>我们登陆<code>semantic react</code>官网，如下图所示：</p>
-<p><a href="https://react.semantic-ui.com/" target="_blank" rel="noopener">https://react.semantic-ui.com/</a></p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjldbmejj30tb0htacs.jpg" alt="image-20191114141647770" style="zoom:67%;">
-
-
-
-<p>在搜索框中搜索<code>card</code>样式，因为我们的页面呈现将会是一个卡片形式，网站搜索结果呈现如下：</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjn5hh48j30nq0itact.jpg" alt="image-20191114141830989" style="zoom:67%;">
-
-
-
-<p>点击<code>Try it</code>，就会展现它的源代码，如下图：</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjob418dj30nl0fy41g.jpg" alt="image-20191114141937869" style="zoom:67%;">
-
-
-
-<p>接着，我们将这些代码复制到<code>ui.js</code>文件中。</p>
-<p>并且在<code>App.js</code>中引用这个导出的<code>CardExampleCard</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CardExampleCard <span class="keyword">from</span> <span class="string">'./display/ui'</span></span><br></pre></td></tr></table></figure>
-
-<p>在<code>App.js</code>中<code>render</code>的<code>return</code>中使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">           &lt;div&gt;</span><br><span class="line">               &lt;CardExampleCard/&gt;</span><br><span class="line">           &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">           )</span></span><br></pre></td></tr></table></figure>
-
-<p>并且我们需要在<code>index.js</code>中引入样式库，添加如下代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'semantic-ui-css/semantic.min.css'</span></span><br></pre></td></tr></table></figure>
-
-<p>这样，启动项目后，主页面就会呈现出该卡片了，如下图：</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xjzc88frj30860d6tad.jpg" alt="image-20191114143013480" style="zoom:50%;">
-
-<blockquote>
-<p>1.将ui.js中图片链接改一下，不然本地没有图片展示，不做详细介绍。</p>
-<p>2.图片可以有两种方式呈现，一个是最基本的放在本地通过访问路径呈现，另一种就是将图片上传到ipfs中，这样的好处就是不需要存放在本地了，但是缺点就是需要翻墙，因为是国外节点<code>infura</code>提供的服务。</p>
-</blockquote>
-<h3 id="1-3-界面细节"><a href="#1-3-界面细节" class="headerlink" title="1.3 界面细节"></a>1.3 界面细节</h3><p>我们最终是将<code>ui.js</code>设计成这样的界面：（暂时没有数据）</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xkca2j8nj307z0mwgnr.jpg" alt="image-20191114144239855" style="zoom:67%;">
-
-<p>利用的都是<code>semantic UI</code>的小组件,代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Card, Icon, Image, Statistic, Button &#125; <span class="keyword">from</span> <span class="string">'semantic-ui-react'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CardExampleCard = <span class="function">(<span class="params">props</span>) =&gt;</span> (</span><br><span class="line">    &lt;Card&gt;</span><br><span class="line">        &lt;Image src=<span class="string">'/image/logo.png'</span> /&gt;</span><br><span class="line">        &lt;Card.Content&gt;</span><br><span class="line">            &lt;Card.Header&gt;福利彩票（xiaoye站）&lt;<span class="regexp">/Card.Header&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Card.Meta&gt;</span></span><br><span class="line"><span class="regexp">                &lt;p&gt;管理员地址: &#123;props.manager&#125;&lt;/</span>p&gt;</span><br><span class="line">                &lt;p&gt;当前地址: &#123;props.currentAccount&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>Card.Meta&gt;</span><br><span class="line">            &lt;Card.Description&gt;每晚八点准时开奖, 不见不散!&lt;/Card.Description&gt;</span><br><span class="line">        &lt;<span class="regexp">/Card.Content&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Card.Content extra&gt;</span></span><br><span class="line"><span class="regexp">            &lt;a&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Icon name='user' /</span>&gt;</span><br><span class="line">                &#123;props.playersCounts&#125; 人参与</span><br><span class="line">            &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Card.Content&gt;</span><br><span class="line"></span><br><span class="line">        &lt;Card.Content extra&gt;</span><br><span class="line">            &lt;Statistic color=<span class="string">'red'</span>&gt;</span><br><span class="line">                &lt;Statistic.Value&gt;&#123;props.balance&#125;ETH&lt;<span class="regexp">/Statistic.Value&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Statistic.Label&gt;奖金池&lt;/</span>Statistic.Label&gt;</span><br><span class="line">            &lt;<span class="regexp">/Statistic&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Card.Content&gt;</span><br><span class="line"></span><br><span class="line">        &lt;Card.Content extra&gt;</span><br><span class="line">            &lt;Statistic color=<span class="string">'blue'</span>&gt;</span><br><span class="line">                &lt;Statistic.Value&gt;第&#123;props.round&#125;期&lt;<span class="regexp">/Statistic.Value&gt;</span></span><br><span class="line"><span class="regexp">                &lt;a href='#'&gt;点击我查看交易历史&lt;/</span>a&gt;</span><br><span class="line">            &lt;<span class="regexp">/Statistic&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Card.Content&gt;</span><br><span class="line"></span><br><span class="line">        &lt;Button animated=<span class="string">'fade'</span> color=<span class="string">"orange"</span>  &gt;</span><br><span class="line">            &lt;Button.Content visible&gt;开始投注吧！&lt;<span class="regexp">/Button.Content&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Button.Content hidden&gt;购买放飞梦想&lt;/</span>Button.Content&gt;</span><br><span class="line">        &lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Button inverted color='yellow'  &gt;</span></span><br><span class="line"><span class="regexp">            开奖</span></span><br><span class="line"><span class="regexp">      &lt;/</span>Button&gt;</span><br><span class="line">        &lt;Button inverted color=<span class="string">'olive'</span>  &gt;</span><br><span class="line">            退奖</span><br><span class="line">      &lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;/</span>Card&gt;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> CardExampleCard</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4-传递数据"><a href="#1-4-传递数据" class="headerlink" title="1.4 传递数据"></a>1.4 传递数据</h3><p>传递数据是目前前端很重要的一环，现在前端三大框架都做得很好，各有各的特色。React是通过<code>state</code>和<code>props</code>两部分负责传递数据。</p>
-<p>我们在<code>App.js</code>中将<code>state</code>的数据传递到<code>&lt;CardExampleCard/&gt;</code>中，这样<code>&lt;CardExampleCard/&gt;</code>组件就可以使用这些数据。</p>
-<p>代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;      </span><br><span class="line">        &lt;CardExampleCard</span><br><span class="line">         manager=&#123;<span class="keyword">this</span>.state.manager&#125;</span><br><span class="line">         round=&#123;<span class="keyword">this</span>.state.round&#125;</span><br><span class="line">         winner=&#123;<span class="keyword">this</span>.state.winner&#125;</span><br><span class="line">         balance=&#123;<span class="keyword">this</span>.state.balance&#125;</span><br><span class="line">         players=&#123;<span class="keyword">this</span>.state.players&#125;</span><br><span class="line">         playersCounts=&#123;<span class="keyword">this</span>.state.playerCounts&#125;</span><br><span class="line">         currentAccount=&#123;<span class="keyword">this</span>.state.currentAccount&#125;</span><br><span class="line">     /&gt;      </span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>页面呈现如下：</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xkj7nnvrj30c50o8dij.jpg" alt="image-20191114144919383" style="zoom:67%;">
-
-<h1 id="2-调用核心函数"><a href="#2-调用核心函数" class="headerlink" title="2.调用核心函数"></a>2.调用核心函数</h1><h3 id="2-1-投注函数"><a href="#2-1-投注函数" class="headerlink" title="2.1 投注函数"></a>2.1 投注函数</h3><p>当用户点击页面中的<code>开始投注吧</code>，应调用合约中的投注函数，所以我们应先写一个投注函数。因为web3调用都是异步的，所以我们使用<code>async/await</code>语法糖来处理。</p>
-<p>函数编写如下:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//投注</span></span><br><span class="line">play = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"开始投注了！"</span>);</span><br><span class="line">  <span class="comment">//获取web3实例当前账户</span></span><br><span class="line">  <span class="keyword">let</span> accounts = <span class="keyword">await</span> web3.eth.getAccounts()</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">     <span class="comment">//合约实例调用play()，要发送1 ether。</span></span><br><span class="line">    <span class="comment">//写明 from,value,gas</span></span><br><span class="line">      <span class="keyword">await</span> lotteryInstance.methods.play().send(&#123;      </span><br><span class="line">      <span class="keyword">from</span>: accounts[<span class="number">0</span>],</span><br><span class="line">      value: web3.utils.toWei(<span class="string">'1'</span>, <span class="string">'ether'</span>),</span><br><span class="line">      <span class="comment">// value: 1 * 10 ** 18,</span></span><br><span class="line">      gas: <span class="string">'3000000'</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'投注成功！'</span>)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>1.async如果遇到await就会等待，等待其执行结果，才会往下继续执行函数内部语句。</p>
-<p>2.send(): 用来向某个地址发送货币（单位为wei）</p>
-</blockquote>
-<p>将 <code>play()</code> 函数传递给 <code>&lt;CardExampleCard/&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paly=&#123;this.play&#125;</span><br></pre></td></tr></table></figure>
-
-<p>给<code>开始投注吧！</code>添加点击函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button animated=&apos;fade&apos; color=&quot;orange&quot; onClick=&#123;props.play&#125; &gt;</span><br></pre></td></tr></table></figure>
-
-<p>这样我们就可以完成投注功能了</p>
-<p>接着我们实践一下，点击投注，<code>metamask</code>会弹出如下界面：</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xlf0yn1ij30k00ygdif.jpg" alt="image-20191114151953558" style="zoom: 50%;">
-
-<p>我们点击确定投注，等待大约30秒，会显示交易已被确认。</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xlfxlmc2j30s603c3zc.jpg" alt="image-20191114152045737"></p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xlgb5g1nj309y0230so.jpg" alt="image-20191114152108391"></p>
-<p>我们再刷新界面，发现这时候，界面发生了如下变化：</p>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8xliv4aojj30810o840x.jpg" alt="image-20191114152335703" style="zoom: 67%;">
-
-<p>开奖退奖函数也是类似进行，不再一一演示。</p>
-<h3 id="2-2-开奖函数"><a href="#2-2-开奖函数" class="headerlink" title="2.2 开奖函数"></a>2.2 开奖函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//开奖</span></span><br><span class="line">   kaijiang = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"开奖啦！"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> accounts = <span class="keyword">await</span> web3.eth.getAccounts()</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> lotteryInstance.methods.kaiJiang().send(&#123;</span><br><span class="line">            <span class="keyword">from</span>: accounts[<span class="number">0</span>],</span><br><span class="line">            gas: <span class="string">'3000000'</span>,</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'开奖成功'</span>)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-退奖函数"><a href="#2-3-退奖函数" class="headerlink" title="2.3 退奖函数"></a>2.3 退奖函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//退奖</span></span><br><span class="line">  tuiJiang = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"退奖啦！"</span>);</span><br><span class="line">    <span class="keyword">let</span> accounts = <span class="keyword">await</span> web3.eth.getAccounts()</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> lotteryInstance.methods.tuiJiang().send(&#123;</span><br><span class="line">            <span class="keyword">from</span>: accounts[<span class="number">0</span>],</span><br><span class="line">            gas: <span class="string">'3000000'</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'退奖成功'</span>)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h1><p>基本上项目界面和核心功能都已经实现了，但是仍存在一些细节上的完善。</p>
-<ol>
-<li><strong>开奖和退奖按钮仅管理员可见</strong></li>
-<li><strong>进行任何操作等待期间，不可以点击任何按钮</strong></li>
-<li><strong>图片上传使用ipfs操作</strong></li>
-</ol>
-
+          
       
     </div>
     
@@ -401,6 +312,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/以太坊/">以太坊</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2019/11/14/界面设计与触发合约-04/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
